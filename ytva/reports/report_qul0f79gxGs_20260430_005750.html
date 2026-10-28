@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Video Analysis Report - qul0f79gxGs</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: #e2e8f0;
+            padding: 40px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(17, 24, 39, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        h2 {
+            color: #818cf8;
+            margin: 25px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #2d3748;
+        }
+        h3 {
+            margin: 15px 0 10px 0;
+            color: #c4b5fd;
+        }
+        .header-info {
+            background: rgba(99, 102, 241, 0.1);
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            border-left: 4px solid #6366f1;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .stat-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.08);
+        }
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #818cf8;
+        }
+        .stat-label {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            margin-top: 5px;
+        }
+        .progress-bar {
+            height: 8px;
+            background: #2d3748;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 8px;
+        }
+        .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.3s;
+        }
+        .fill-normal { background: #10b981; }
+        .fill-spam { background: #f59e0b; }
+        .fill-toxic { background: #ef4444; }
+        .fill-bot { background: #f59e0b; }
+        
+        /* Viral Score Styles */
+        .viral-score-container {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        .viral-score-circle {
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 15px;
+        }
+        .viral-score-text {
+            font-size: 2rem;
+            font-weight: 800;
+        }
+        .viral-label {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            margin-top: 8px;
+        }
+        
+        /* Suggestion Styles */
+        .suggestion-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        .suggestion-card {
+            background: rgba(99,102,241,0.08);
+            border-radius: 12px;
+            padding: 15px;
+            border-left: 3px solid;
+            transition: all 0.3s;
+        }
+        .suggestion-card:hover {
+            transform: translateY(-3px);
+            background: rgba(99,102,241,0.12);
+        }
+        .suggestion-card.urgent { border-left-color: #ef4444; }
+        .suggestion-card.high { border-left-color: #f59e0b; }
+        .suggestion-card.medium { border-left-color: #10b981; }
+        .suggestion-card.low { border-left-color: #6366f1; }
+        
+        .suggestion-title {
+            font-weight: 700;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+        .suggestion-desc {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            margin-bottom: 10px;
+        }
+        .priority-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        .priority-urgent { background: #ef444420; color: #ef4444; }
+        .priority-high { background: #f59e0b20; color: #f59e0b; }
+        .priority-medium { background: #10b98120; color: #10b981; }
+        .priority-low { background: #6366f120; color: #818cf8; }
+        
+        /* Action Button */
+        .action-btn {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            padding: 6px 12px;
+            font-size: 0.7rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 10px;
+        }
+        .action-btn:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+        
+        /* Checklist Styles */
+        .improvement-item {
+            background: rgba(255,255,255,0.03);
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+        .improvement-check { color: #10b981; margin-right: 10px; }
+        .improvement-cross { color: #ef4444; margin-right: 10px; }
+        
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 0.85rem;
+        }
+        th {
+            background: rgba(99, 102, 241, 0.2);
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        .badge-normal { background: #10b98120; color: #10b981; border: 1px solid #10b98140; }
+        .badge-spam { background: #f59e0b20; color: #f59e0b; border: 1px solid #f59e0b40; }
+        .badge-toxic { background: #ef444420; color: #ef4444; border: 1px solid #ef444440; }
+        .badge-bot { background: #f59e0b20; color: #f59e0b; border: 1px solid #f59e0b40; }
+        .badge-human { background: #10b98120; color: #10b981; border: 1px solid #10b98140; }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #2d3748;
+            font-size: 0.8rem;
+            color: #64748b;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>YouTube Video Analysis Report</h1>
+    <div class="header-info">
+        <p><strong>Video Title:</strong> Lec-7: Breadth First Search (BFS) with example | Uninformed Search | Artificial Intelligence</p>
+        <p><strong>Video ID:</strong> qul0f79gxGs</p>
+        <p><strong>Analysis Date:</strong> 2026-04-30 00:57:50</p>
+        <p><strong>Total Comments Analyzed:</strong> 100</p>
+    </div>
+
+    <!-- Viral Potential Score -->
+    <div class="viral-score-container">
+        <h3>Viral Potential Score</h3>
+        <div class="viral-score-circle">
+            <svg width="140" height="140" viewBox="0 0 140 140">
+                <circle cx="70" cy="70" r="62" fill="none" stroke="#2d3748" stroke-width="8"/>
+                <circle cx="70" cy="70" r="62" fill="none" stroke="#10b981" stroke-width="8"
+                        stroke-dasharray="389.0 389" stroke-dashoffset="0"
+                        transform="rotate(-90 70 70)"/>
+                <text x="70" y="80" text-anchor="middle" fill="#10b981" font-size="28" font-weight="bold">100%</text>
+                <text x="70" y="95" text-anchor="middle" fill="#94a3b8" font-size="10">Viral Score</text>
+            </svg>
+        </div>
+        <div class="viral-score-text" style="color: #10b981">HIGH VIRAL POTENTIAL</div>
+        <div class="viral-label">Based on toxicity, spam, bot detection, and audience engagement metrics</div>
+    </div>
+
+    <!-- Summary Stats -->
+    <h2>Overall Statistics</h2>
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-value">100</div>
+            <div class="stat-label">Total Comments</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value" style="color: #10b981;">97%</div>
+            <div class="stat-label">Normal Comments (97)</div>
+            <div class="progress-bar"><div class="progress-fill fill-normal" style="width: 97%"></div></div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value" style="color: #f59e0b;">3%</div>
+            <div class="stat-label">Spam Comments (3)</div>
+            <div class="progress-bar"><div class="progress-fill fill-spam" style="width: 3%"></div></div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value" style="color: #ef4444;">0%</div>
+            <div class="stat-label">Toxic Comments (0)</div>
+            <div class="progress-bar"><div class="progress-fill fill-toxic" style="width: 0%"></div></div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value" style="color: #f59e0b;">3%</div>
+            <div class="stat-label">Suspected Bots (3)</div>
+            <div class="progress-bar"><div class="progress-fill fill-bot" style="width: 3%"></div></div>
+        </div>
+    </div>
+
+    <!-- Viral Growth Suggestions -->
+    <h2>Viral Growth Suggestions and Improvements</h2>
+    <div class="suggestion-grid">
+
+        <div class="suggestion-card medium">
+            <div class="suggestion-title">Suspicious Bot Activity</div>
+            <div class="suggestion-desc">3 bot-like comments detected. Monitor for unusual comment patterns.</div>
+            <div>
+                <span class="priority-badge priority-medium">MEDIUM PRIORITY</span>
+            </div>
+            <div class="action-btn" onclick="alert('Action: Review suspicious accounts and report bot activity to YouTube.')">
+                Take Action
+            </div>
+        </div>
+
+        <div class="suggestion-card medium">
+            <div class="suggestion-title">What Your Audience Loves</div>
+            <div class="suggestion-desc">Your audience is most engaged with: tech, education. Create more content around these topics!</div>
+            <div>
+                <span class="priority-badge priority-medium">MEDIUM PRIORITY</span>
+            </div>
+            <div class="action-btn" onclick="alert('Action: Plan your next video around the most discussed themes in comments.')">
+                Take Action
+            </div>
+        </div>
+
+        <div class="suggestion-card medium">
+            <div class="suggestion-title">Consistency is Key</div>
+            <div class="suggestion-desc">Videos with consistent upload schedules tend to perform better. Your comment analysis can help identify what your audience wants.</div>
+            <div>
+                <span class="priority-badge priority-medium">MEDIUM PRIORITY</span>
+            </div>
+            <div class="action-btn" onclick="alert('Action: Analyze which topics get the most positive engagement and create more content in that niche.')">
+                Take Action
+            </div>
+        </div>
+
+        <div class="suggestion-card low">
+            <div class="suggestion-title">Build a Community, Not Just Views</div>
+            <div class="suggestion-desc">Respond to top comments, ask follow-up questions, and create a sense of belonging.</div>
+            <div>
+                <span class="priority-badge priority-low">LOW PRIORITY</span>
+            </div>
+            <div class="action-btn" onclick="alert('Action: Reply to at least 5 comments in your next video within the first hour of posting.')">
+                Take Action
+            </div>
+        </div>
+
+        <div class="suggestion-card high">
+            <div class="suggestion-title">Optimize Your Video Title and Thumbnail</div>
+            <div class="suggestion-desc">Titles and thumbnails are the number one factor for click-through rate.</div>
+            <div>
+                <span class="priority-badge priority-high">HIGH PRIORITY</span>
+            </div>
+            <div class="action-btn" onclick="alert('Action: Test 2-3 different thumbnails and titles for your next video.')">
+                Take Action
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Quick Wins Checklist -->
+    <h2>Quick Wins Checklist</h2>
+    <div style="background: rgba(255,255,255,0.03); border-radius: 12px; padding: 15px; margin-bottom: 25px;">
+        <div class="improvement-item">
+            <span class="improvement-check">[X]</span>
+            Clean up spam comments (3 detected)
+        </div>
+        <div class="improvement-item">
+            <span class="improvement-check">[X]</span>
+            Address toxic comments (0 detected)
+        </div>
+        <div class="improvement-item">
+            <span class="improvement-check">[X]</span>
+            Positive engagement rate: 97% (Good!)
+        </div>
+        <div class="improvement-item">
+            <span class="improvement-cross">[ ]</span>
+            Bot activity: 3 bot-like comments detected
+        </div>
+        <div class="improvement-item">
+            <span>[ ]</span>
+            Next video suggestion: Create content based on the most discussed themes from your audience
+        </div>
+    </div>
+
+    <!-- Toxic Comments Section -->
+    <h2>Top Toxic Comments</h2>
+<p>No toxic comments detected in this dataset.</p>
+    <h2>Top Spam Comments</h2>
+
+    <div style="overflow-x: auto;">
+        <table>
+            <thead>
+                <tr><th>#</th><th>Author</th><th>Comment</th><th>Confidence</th></tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <td>1</td>
+                    <td>@mayurbhor7563</td>
+                    <td>"&lt;a href=&quot;https://www.youtube.com/watch?v=qul0f79gxGs&amp;amp;t=597&quot;&gt;9:57&lt;/a&gt; If cost..."</td>
+                    <td><span class="badge badge-spam">80%</span></td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td>@murtazamala01</td>
+                    <td>"Best channel i got on utube  for IT students &lt;a href=&quot;http://www.youtube.com/res..."</td>
+                    <td><span class="badge badge-spam">80%</span></td>
+                </tr>
+
+                <tr>
+                    <td>3</td>
+                    <td>@shadabkhan6342</td>
+                    <td>"&lt;a href=&quot;https://www.youtube.com/watch?v=qul0f79gxGs&amp;amp;t=315&quot;&gt;5:15&lt;/a&gt; Level S..."</td>
+                    <td><span class="badge badge-spam">80%</span></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <h2>Suspicious Bot Comments</h2>
+
+    <div style="overflow-x: auto;">
+        <table>
+            <thead>
+                <tr><th>#</th><th>Author</th><th>Comment</th><th>Bot Probability</th></tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <td>1</td>
+                    <td>@mayurbhor7563</td>
+                    <td>"&lt;a href=&quot;https://www.youtube.com/watch?v=qul0f79gxGs&amp;amp;t=597&quot;&gt;9:57&lt;/a&gt; If cost..."</td>
+                    <td><span class="badge badge-bot">60%</span></td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td>@murtazamala01</td>
+                    <td>"Best channel i got on utube  for IT students &lt;a href=&quot;http://www.youtube.com/res..."</td>
+                    <td><span class="badge badge-bot">60%</span></td>
+                </tr>
+
+                <tr>
+                    <td>3</td>
+                    <td>@shadabkhan6342</td>
+                    <td>"&lt;a href=&quot;https://www.youtube.com/watch?v=qul0f79gxGs&amp;amp;t=315&quot;&gt;5:15&lt;/a&gt; Level S..."</td>
+                    <td><span class="badge badge-bot">60%</span></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <h2>All Comments (First 50)</h2>
+    <div style="overflow-x: auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Author</th>
+                    <th>Comment</th>
+                    <th>Category</th>
+                    <th>Confidence</th>
+                    <th>Bot Status</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <td>1</td>
+                    <td>@aishabatool4761</td>
+                    <td>"You are really a gift for IT learners ... May Allah Almighty Guide You in every ..."</td>
+                    <td><span class="badge badge-normal">NORMAL</span></td>
+                    <td>75%</td>
+                    <td><span class="badge badge-human">HUMAN</span></td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td>@humairash1909</td>
+                    <td>"when my professor teaches me this topic ...i thought its v.difficult ...but its ..."</td>
+                    <td><span class="badge badge-normal">NORMAL</span></td>
+                    <td>75%</td>
+                    <td><span class="badge badge-human">HUMAN</span></td>
+                </tr>
+
+                <tr>
+                    <td>3</td>
+                    <td>@MALLIKARJUNANNAPPAGOUDAJAMADA</td>
+                    <td>"BFS is like &amp;quot;sabka level niklega&amp;quot;..."</td>
+                    <td><span class="badge badge-normal">NORMAL</span></td>
+                    <td>75%</td>
+                    <td><span class="badge badge-human">HUMAN</span></td>
+                </tr>
+
+                <tr>
+                    <td>4</td>
+                    <td>@771aryan</td>
+                    <td>"The actual time complexity would be O(b^0 + b^1 + ... + b^(d-1) + b ^ d) which i..."</td>
+                    <td><span class="badge badge-normal">NORMAL</span></td>
+                    <td>75%</td>
+                    <td><span class="badge badge-human">HUMAN</span></td>
+                </tr>
+
+                <tr>
+                    <td>5</td>
+                    <td>@nijwmsha</td>
+                    <td>"The Way you are teaching is same to my College professor. I was Absent when sir ..."</td>
+                    <td><span class="badge badge-normal">NORMAL</span></td>
+                    <td>75%</td>
+                    <td><span class="badge badge-human">HUMAN</span></td>
+                </tr>
+
+                <tr>
+                    <td>6</td>
+                    <td>@chathuriupeksha7093</td>
+                    <td>"Eventhough I&amp;#39;m a Sri lankan 🇱🇰 I could understand every single thing you exp..."</td>
+                    <td><span class="badge badge-normal">NORMAL</span></td>
+                    <td>75%</td>
+                    <td><span class="badge badge-human">HUMAN</span></td>
+                </tr>
+
+                <tr>
+                    <td>7</td>
+                    <td>@tempoallgaming</td>
+                    <td>"Tomorrow is my exam..."</td>
+                    <td><span class="badge badge-normal">NORMAL</span></td>
+                    <td>75%</td>
+                    <td><span class="badge badge-human">HUMAN</span></td>
+                </tr>
+
+                <tr>
+                    <td>8</td>
+                    <td>@ranvijaysingh250</td>
+                    <td>"Your way of explaining any topic is just awesome..u clearly explain it in simple..."</td>
+                    <td><span class="badge badge-normal">NORMAL</span></td>
+                    <td>75%</td>
+                    <td><span class="badge badge-human">HUMAN</span></td>
+                </tr>
+
+                <tr>
+                    <td>9</td>
+                    <td>@anastalks5023</td>
+                    <td>"You cleared my concept. Which I couldn&amp;#39;t clear in 3 smesters..."</td>
+                    <td><span class="badge badge-normal">NORMAL</span></td>
+                    <td>75%</td>
+                    <td><span class="badge badge-human">HUMAN</span></td>
+                </tr>
+
+                <tr>
+                    <td>10</td>
+                    <td>@FurqaanShafi</td>
+                    <td>"simply wow brother!!!...it has been a while now since I started following ua vid..."</td>
+                    <td><span class="badge badge-normal">NORMAL</span></td>
+                    <td>75%</td>
+                    <td><span class="badge badge-human">HUMAN</span></td>
+                </tr>
+
+                <tr>
+                    <td>11</td>
+                    <td>@saw-rosevrs7068</td>
+                    <td>"Thank u sir I am from Nepal ❤️..."</td>
+                    <td><span class="badge badge-normal">NORMAL</span></td>
+                    <td>75%</td>
+                    <td><span class="badge badge-human">HUMAN</span></td>
+                </tr>
+
+                <tr>
+                    <td>12</td>
+                    <td>@sagarsahu4100</td>
+                    <td>"Sir you are great no one can explain as you explain. &lt;br&gt;Teaching level damn hig..."</td>
+                    <td><span class="badge badge-normal">NORMAL</span></td>
+                    <td>75%</td>
+                    <td><span class="badge badge-human">HUMAN</span></td>
+                </tr>
+
+                <tr>
+                    <td>13</td>
+                    <td>@sabahakhan2142</td>
+                    <td>"Divided by borders , united by gate smashers .&lt;br&gt;Love from Pakistan....."</td>
+                    <td><span class="badge badge-normal">NORMAL</span></td>
+                    <td>75%</td>
+                    <td><span class="badge badge-human">HUMAN</span></td>
+                </tr>
+
+                <tr>
+                    <td>14</td>
+                    <td>@zainmalik457</td>
+                    <td>"You are Rock , Such a Easy way of teaching even a dull student like me can becom..."</td>
+                    <td><span class="badge badge-normal">NORMAL</span></td>
+                    <td>75%</td>
+                    <td><span class="badge badge-human">HUMAN</span></td>
+                </tr>
+
+                <tr>
+                    <td>15</td>
+                    <td>@JayPatel-bo1fu</td>
+                    <td>"Your teching skill is beyond excellence. &lt;br&gt;Thank you for teaching us &amp;amp; sha..."</td>
+                    <td><span class="badge badge-normal">NORMAL</span></td>
+                    <td>75%</td>
+                    <td><span class="badge badge-human">HUMAN</span></td>
+                </tr>
+
+                <tr>
+                    <td>16</td>
+                    <td>@Anksuhsharma</td>
+                    <td>"Tomorrow is my exam..."</td>
+                    <td><span class="badge badge-normal">NORMAL</span></td>
+                    <td>75%</td>
+                    <td><span class="badge badge-human">HUMAN</span></td>
+                </tr>
+
+                <tr>
+                    <td>17</td>
+                    <td>@mayurbhor7563</td>
+                    <td>"&lt;a href=&quot;https://www.youtube.com/watch?v=qul0f79gxGs&amp;amp;t=597&quot;&gt;9:57&lt;/a&gt; If cost..."</td>
+                    <td><span class="badge badge-spam">SPAM</span></td>
+                    <td>80%</td>
+                    <td><span class="badge badge-bot">BOT</span></td>
+                </tr>
+
+                <tr>
+                    <td>18</td>
+                    <td>@FazilKhan-vr6sw</td>
+                    <td>"finally Epic lecture uploaded On BFS..."</td>
+                    <td><span class="badge badge-normal">NORMAL</span></td>
+                    <td>75%</td>
+                    <td><span class="badge badge-human">HUMAN</span></td>
+                </tr>
+
+                <tr>
+                    <td>19</td>
+                    <td>@mdurgaprasadrao2052</td>
+                    <td>"Much more perfectly better than college teachers..."</td>
+                    <td><span class="badge badge-normal">NORMAL</span></td>
+                    <td>75%</td>
+                    <td><span class="badge badge-human">HUMAN</span></td>
+                </tr>
+
+                <tr>
+                    <td>20</td>
+                    <td>@anjalisarma877</td>
+                    <td>"extremely helpful, all your videos. dont stop making them...."</td>
+                    <td><span class="badge badge-normal">NORMAL</span></td>
+                    <td>75%</td>
+                    <td><span class="badge badge-human">HUMAN</span></td>
+                </tr>
+
+                <tr>
+                    <td>21</td>
+                    <td>@akbarahmad5245</td>
+                    <td>"Thankyou so much sir, really appreciate your lectures regarding to Artificial In..."</td>
+                    <td><span class="badge badge-normal">NORMAL</span></td>
+                    <td>75%</td>
+                    <td><span class="badge badge-human">HUMAN</span></td>
+                </tr>
+
+                <tr>
+                    <td>22</td>
+                    <td>@fayezhabhatti5903</td>
+                    <td>"U r a very good teacher..thank u sir..🙂..."</td>
+                    <td><span class="badge badge-normal">NORMAL</span></td>
+                    <td>75%</td>
+                    <td><span class="badge badge-human">HUMAN</span></td>
+                </tr>
+
+                <tr>
+                    <td>23</td>
+                    <td>@subhasishbagchi8902</td>
+                    <td>"Thanks to this quality education you provide us it&amp;#39;s truly uncommentable. Yo..."</td>
+                    <td><span class="badge badge-normal">NORMAL</span></td>
+                    <td>75%</td>
+                    <td><span class="badge badge-human">HUMAN</span></td>
+                </tr>
+
+                <tr>
+                    <td>24</td>
+                    <td>@zaresaquran7062</td>
+                    <td>"such a great lecture and give us deep and main points that under the appreciatio..."</td>
+                    <td><span class="badge badge-normal">NORMAL</span></td>
+                    <td>75%</td>
+                    <td><span class="badge badge-human">HUMAN</span></td>
+                </tr>
+
+                <tr>
+                    <td>25</td>
+                    <td>@PoornaRaavi-et6ll</td>
+                    <td>"Bro I am grad student in United States. I used to follow your lectures during my..."</td>
+                    <td><span class="badge badge-normal">NORMAL</span></td>
+                    <td>75%</td>
+                    <td><span class="badge badge-human">HUMAN</span></td>
+                </tr>
+
+                <tr>
+                    <td>26</td>
+                    <td>@Chaudhry-c2t</td>
+                    <td>"You are the best teacher ever . Your lectures are like gifts to me 😊..."</td>
+                    <td><span class="badge badge-normal">NORMAL</span></td>
+                    <td>75%</td>
+                    <td><span class="badge badge-human">HUMAN</span></td>
+                </tr>
+
+                <tr>
+                    <td>27</td>
+                    <td>@vishal_thadani</td>
+                    <td>"I&amp;#39;m here night before exam... I&amp;#39;m happy I came here... Concept clear 🔥🔥👍..."</td>
+                    <td><span class="badge badge-normal">NORMAL</span></td>
+                    <td>75%</td>
+                    <td><span class="badge badge-human">HUMAN</span></td>
+                </tr>
+
+                <tr>
+                    <td>28</td>
+                    <td>@tarunkumararcot7551</td>
+                    <td>"sir you are fantastic for all cse students..Thanks for all the video lectures yo..."</td>
+                    <td><span class="badge badge-normal">NORMAL</span></td>
+                    <td>75%</td>
+                    <td><span class="badge badge-human">HUMAN</span></td>
+                </tr>
+
+                <tr>
+                    <td>29</td>
+                    <td>@154_shamimaakhterriya2</td>
+                    <td>"best explanation ever..thanks sir..you are the best as always..."</td>
+                    <td><span class="badge badge-normal">NORMAL</span></td>
+                    <td>75%</td>
+                    <td><span class="badge badge-human">HUMAN</span></td>
+                </tr>
+
+                <tr>
+                    <td>30</td>
+                    <td>@msvaity</td>
+                    <td>"Your videos are best for conceptual clearing, thank you!..."</td>
+                    <td><span class="badge badge-normal">NORMAL</span></td>
+                    <td>75%</td>
+                    <td><span class="badge badge-human">HUMAN</span></td>
+                </tr>
+
+                <tr>
+                    <td>31</td>
+                    <td>@Iqra-l1g</td>
+                    <td>"Masha Allah, your way of explaining is very good, thank you sir. May Allah grant..."</td>
+                    <td><span class="badge badge-normal">NORMAL</span></td>
+                    <td>75%</td>
+                    <td><span class="badge badge-human">HUMAN</span></td>
+                </tr>
+
+                <tr>
+                    <td>32</td>
+                    <td>@LoyabaSalam</td>
+                    <td>"Thanks a lot! I have AI exam tomorrow. This will help me a lot 😊..."</td>
+                    <td><span class="badge badge-normal">NORMAL</span></td>
+                    <td>75%</td>
+                    <td><span class="badge badge-human">HUMAN</span></td>
+                </tr>
+
+                <tr>
+                    <td>33</td>
+                    <td>@biddutkumar7061</td>
+                    <td>"Love from Bangladesh Sir ...."</td>
+                    <td><span class="badge badge-normal">NORMAL</span></td>
+                    <td>75%</td>
+                    <td><span class="badge badge-human">HUMAN</span></td>
+                </tr>
+
+                <tr>
+                    <td>34</td>
+                    <td>@anishchar4282</td>
+                    <td>"Thank you very much sir 🙏🏻..."</td>
+                    <td><span class="badge badge-normal">NORMAL</span></td>
+                    <td>75%</td>
+                    <td><span class="badge badge-human">HUMAN</span></td>
+                </tr>
+
+                <tr>
+                    <td>35</td>
+                    <td>@arshiantariq1582</td>
+                    <td>"thanks sir to clear all doubt..."</td>
+                    <td><span class="badge badge-normal">NORMAL</span></td>
+                    <td>75%</td>
+                    <td><span class="badge badge-human">HUMAN</span></td>
+                </tr>
+
+                <tr>
+                    <td>36</td>
+                    <td>@Prakash-l5z4s</td>
+                    <td>"Bahut saare channel h jo pdhate h Mgr sbse shi tareeke se smjha ap hee pate ho s..."</td>
+                    <td><span class="badge badge-normal">NORMAL</span></td>
+                    <td>75%</td>
+                    <td><span class="badge badge-human">HUMAN</span></td>
+                </tr>
+
+                <tr>
+                    <td>37</td>
+                    <td>@konozbinrashid7774</td>
+                    <td>"I started learning Database Management Systems from you a few months back. Now t..."</td>
+                    <td><span class="badge badge-normal">NORMAL</span></td>
+                    <td>75%</td>
+                    <td><span class="badge badge-human">HUMAN</span></td>
+                </tr>
+
+                <tr>
+                    <td>38</td>
+                    <td>@VaidehiSoni</td>
+                    <td>"Your lectures are the best......"</td>
+                    <td><span class="badge badge-normal">NORMAL</span></td>
+                    <td>75%</td>
+                    <td><span class="badge badge-human">HUMAN</span></td>
+                </tr>
+
+                <tr>
+                    <td>39</td>
+                    <td>@zelalemdansashanka3737</td>
+                    <td>"amazing lecture, than u very much!..."</td>
+                    <td><span class="badge badge-normal">NORMAL</span></td>
+                    <td>75%</td>
+                    <td><span class="badge badge-human">HUMAN</span></td>
+                </tr>
+
+                <tr>
+                    <td>40</td>
+                    <td>@babitakumari1558</td>
+                    <td>"You explain very easy words, so can&amp;#39;t any problem to understand all topics. ..."</td>
+                    <td><span class="badge badge-normal">NORMAL</span></td>
+                    <td>75%</td>
+                    <td><span class="badge badge-human">HUMAN</span></td>
+                </tr>
+
+                <tr>
+                    <td>41</td>
+                    <td>@shashankkestwal4454</td>
+                    <td>"Nice video. Cleared my concept..."</td>
+                    <td><span class="badge badge-normal">NORMAL</span></td>
+                    <td>75%</td>
+                    <td><span class="badge badge-human">HUMAN</span></td>
+                </tr>
+
+                <tr>
+                    <td>42</td>
+                    <td>@anshulthakur3806</td>
+                    <td>"Amazing quality content. Awsome sir..."</td>
+                    <td><span class="badge badge-normal">NORMAL</span></td>
+                    <td>75%</td>
+                    <td><span class="badge badge-human">HUMAN</span></td>
+                </tr>
+
+                <tr>
+                    <td>43</td>
+                    <td>@Abhinavkumar-og3xd</td>
+                    <td>"The way of teaching is good...."</td>
+                    <td><span class="badge badge-normal">NORMAL</span></td>
+                    <td>75%</td>
+                    <td><span class="badge badge-human">HUMAN</span></td>
+                </tr>
+
+                <tr>
+                    <td>44</td>
+                    <td>@murtazamala01</td>
+                    <td>"Best channel i got on utube  for IT students &lt;a href=&quot;http://www.youtube.com/res..."</td>
+                    <td><span class="badge badge-spam">SPAM</span></td>
+                    <td>80%</td>
+                    <td><span class="badge badge-bot">BOT</span></td>
+                </tr>
+
+                <tr>
+                    <td>45</td>
+                    <td>@Unknown-vi7jc</td>
+                    <td>"Really life saving video..."</td>
+                    <td><span class="badge badge-normal">NORMAL</span></td>
+                    <td>75%</td>
+                    <td><span class="badge badge-human">HUMAN</span></td>
+                </tr>
+
+                <tr>
+                    <td>46</td>
+                    <td>@premjena903</td>
+                    <td>"Thank you very much Sir it is nice ...lecture . Ur explain process is outstandin..."</td>
+                    <td><span class="badge badge-normal">NORMAL</span></td>
+                    <td>75%</td>
+                    <td><span class="badge badge-human">HUMAN</span></td>
+                </tr>
+
+                <tr>
+                    <td>47</td>
+                    <td>@shaynagarg333</td>
+                    <td>"Waah sir g👌👌 👌...apne is topic k bare m ik ik baat smjha di👍..."</td>
+                    <td><span class="badge badge-normal">NORMAL</span></td>
+                    <td>75%</td>
+                    <td><span class="badge badge-human">HUMAN</span></td>
+                </tr>
+
+                <tr>
+                    <td>48</td>
+                    <td>@alimurtaza9950</td>
+                    <td>"I usually never write comments but this guy. Every time I get stuck in a topic t..."</td>
+                    <td><span class="badge badge-normal">NORMAL</span></td>
+                    <td>75%</td>
+                    <td><span class="badge badge-human">HUMAN</span></td>
+                </tr>
+
+                <tr>
+                    <td>49</td>
+                    <td>@nextleveltech267</td>
+                    <td>"Thank you so much sir❤️🙏❤️..."</td>
+                    <td><span class="badge badge-normal">NORMAL</span></td>
+                    <td>75%</td>
+                    <td><span class="badge badge-human">HUMAN</span></td>
+                </tr>
+
+                <tr>
+                    <td>50</td>
+                    <td>@JINVERMA</td>
+                    <td>"Me who is waiting for take screenshot 😂😂..."</td>
+                    <td><span class="badge badge-normal">NORMAL</span></td>
+                    <td>75%</td>
+                    <td><span class="badge badge-human">HUMAN</span></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <div class="footer">
+        <p>Report generated by YouTube Video Analyzer (YT-VA)</p>
+        <p>Use these insights to optimize your content strategy and increase viral potential</p>
+        <p>Department of Software Engineering, UAJK | Final Year Project 2025-26</p>
+    </div>
+</div>
+<script>
+    function showAction(action) {
+        alert('Action Item: ' + action);
+    }
+</script>
+</body>
+</html>

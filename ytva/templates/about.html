@@ -1,0 +1,203 @@
+{% extends "base.html" %}
+{% block title %}About{% endblock %}
+{% set active_page = 'about' %}
+
+{% block content %}
+<div class="page-wrap">
+  <div class="page-header" style="margin-bottom:2rem">
+    <div class="page-header-left">
+      <h1>About This Project</h1>
+      <p>Final Year Project — Department of Software Engineering, University of Azad Jammu &amp; Kashmir (UAJK)</p>
+    </div>
+  </div>
+
+  <!-- Abstract Section -->
+  <div class="about-block">
+    <div class="ab-title">Project Abstract</div>
+    <p>YouTube has become one of the largest platforms for user-generated content, where millions of users interact through comments every day. These comments contain valuable insights regarding public opinion, engagement patterns, trends, and potentially harmful behavior such as spam and toxicity. The <strong>YouTube Video Analyzer (YT-VA)</strong> is an AI-driven web-based application designed to analyze, visualize, and interpret YouTube comments using Deep Learning, Natural Language Processing (NLP), and Transformer-based models.</p>
+    <p style="margin-top:.85rem">The system collects comments from YouTube videos using the YouTube Data API and processes them through multiple AI models to perform spam detection, toxic content filtering, bot identification, topic clustering, intent prediction, and trend matching. An interactive visualization dashboard presents the analyzed data in graphical form, enabling content creators, researchers, and marketers to gain meaningful insights.</p>
+  </div>
+
+  <!-- Problem & Solution -->
+  <div class="two-col" style="margin-bottom:1.25rem">
+    <div class="about-block" style="margin-bottom:0">
+      <div class="ab-title">Problem Statement</div>
+      <p>Manual analysis of YouTube comments is inefficient, subjective, and unsuitable for large-scale datasets. Content creators and organizations struggle to identify spam, toxic behavior, and bot activity in real time. Existing tools often focus on limited metrics such as likes or basic sentiment, lacking deeper analysis like topic clustering, intent prediction, and trend matching.</p>
+    </div>
+    <div class="about-block" style="margin-bottom:0">
+      <div class="ab-title">Proposed Solution</div>
+      <p>YT-VA automates the collection and analysis of YouTube comments using Deep Learning, NLP, and Transformer-based models. The system extracts comments via the YouTube Data API, preprocesses text data, and applies multiple AI models. An interactive dashboard presents actionable insights to content creators, moderators, and researchers.</p>
+    </div>
+  </div>
+
+  <!-- System Modules (All 6) -->
+  <div class="about-block">
+    <div class="ab-title">System Modules</div>
+    <div class="modules-about-grid">
+      <div class="mab-item">
+        <div class="mab-num">01</div>
+        <div>
+          <strong>Visualization Dashboard</strong>
+          <p>Interactive dashboard displaying comment distribution, bot ratio, confidence histograms, topic distribution, intent breakdown, and trend alignment using Plotly charts.</p>
+          <p class="mab-status-active" style="margin-top:.4rem">✓ Fully Implemented</p>
+        </div>
+      </div>
+      <div class="mab-item">
+        <div class="mab-num">02</div>
+        <div>
+          <strong>Toxic &amp; Spam Detection</strong>
+          <p>Trained Keras Deep Learning model (183K+ vocabulary) classifies comments as normal, spam, or toxic with confidence scores and hybrid NLP signal overlay.</p>
+          <p class="mab-status-active" style="margin-top:.4rem">✓ Fully Implemented</p>
+        </div>
+      </div>
+      <div class="mab-item">
+        <div class="mab-num">03</div>
+        <div>
+          <strong>Bot Ratio Detection</strong>
+          <p>ML + pattern matching hybrid model analyzes author name and comment text to estimate bot probability per comment and overall bot ratio in the video.</p>
+          <p class="mab-status-active" style="margin-top:.4rem">✓ Fully Implemented</p>
+        </div>
+      </div>
+      <div class="mab-item">
+        <div class="mab-num">04</div>
+        <div>
+          <strong>Topic Clustering</strong>
+          <p>Groups comments into meaningful topics using BERTopic with SBERT embeddings. Automatically discovers discussion themes without any training.</p>
+          <p class="mab-status-active" style="margin-top:.4rem">✓ Fully Implemented</p>
+        </div>
+      </div>
+      <div class="mab-item">
+        <div class="mab-num">05</div>
+        <div>
+          <strong>Intent Prediction</strong>
+          <p>Zero-shot classification using HuggingFace Transformers to understand user intent: questions, feedback, hate speech, promotions, appreciation, criticism, and more.</p>
+          <p class="mab-status-active" style="margin-top:.4rem">✓ Fully Implemented</p>
+        </div>
+      </div>
+      <div class="mab-item">
+        <div class="mab-num">06</div>
+        <div>
+          <strong>Trend Topic Matching</strong>
+          <p>Matches extracted comment topics with current trending keywords across 11+ categories (Technology, Gaming, Music, Sports, etc.) using semantic similarity.</p>
+          <p class="mab-status-active" style="margin-top:.4rem">✓ Fully Implemented</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Technology Stack -->
+  <div class="about-block">
+    <div class="ab-title">Tools &amp; Technologies</div>
+    <div class="tech-grid">
+      <div class="tech-item"><span class="tech-icon">🐍</span><span class="tech-name">Python 3.10</span><span class="tech-role">Main language</span></div>
+      <div class="tech-item"><span class="tech-icon">🌐</span><span class="tech-name">Flask</span><span class="tech-role">Web framework</span></div>
+      <div class="tech-item"><span class="tech-icon">📺</span><span class="tech-name">YouTube API</span><span class="tech-role">Data extraction</span></div>
+      <div class="tech-item"><span class="tech-icon">🧠</span><span class="tech-name">TensorFlow/Keras</span><span class="tech-role">Deep Learning</span></div>
+      <div class="tech-item"><span class="tech-icon">🔤</span><span class="tech-name">BERTopic / SBERT</span><span class="tech-role">Topic clustering</span></div>
+      <div class="tech-item"><span class="tech-icon">🤗</span><span class="tech-name">Transformers</span><span class="tech-role">Zero-shot intent</span></div>
+      <div class="tech-item"><span class="tech-icon">📊</span><span class="tech-name">Plotly</span><span class="tech-role">Visualization</span></div>
+      <div class="tech-item"><span class="tech-icon">💻</span><span class="tech-name">HTML/CSS/JS</span><span class="tech-role">Frontend</span></div>
+    </div>
+  </div>
+
+  <!-- Development Team -->
+  <div class="about-block">
+    <div class="ab-title">Development Team</div>
+    <div class="team-grid-about">
+      <div class="team-card">
+        <div class="tc-avatar">RS</div>
+        <div class="tc-info">
+          <div class="tc-name">Raja Shayan Ejaz Khan</div>
+          <div class="tc-roll">Roll No: 2022-SE-19</div>
+          <div class="tc-role">Web Dashboard &amp; Database</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="tc-avatar">HN</div>
+        <div class="tc-info">
+          <div class="tc-name">Hadeed Nisar</div>
+          <div class="tc-roll">Roll No: 2022-SE-21</div>
+          <div class="tc-role">NLP &amp; Detection Modules</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="tc-avatar">HI</div>
+        <div class="tc-info">
+          <div class="tc-name">Haris Ishfaq</div>
+          <div class="tc-roll">Roll No: 2022-SE-24</div>
+          <div class="tc-role">Data Analysis &amp; ML Models</div>
+        </div>
+      </div>
+    </div>
+    <div class="supervisor-row">
+      <div class="sup-label">Project Supervisor:</div>
+      <div class="sup-name">Engr. Khurram Iqbal</div>
+      <div class="sup-org">Department of Software Engineering, University of Azad Jammu &amp; Kashmir (UAJK)</div>
+    </div>
+  </div>
+
+  <!-- Methodology -->
+  <div class="about-block">
+    <div class="ab-title">Software Process Methodology</div>
+    <p>The project follows the <strong>Agile Software Development Methodology</strong>, allowing iterative development, continuous testing, and regular feedback. Each sprint includes requirement analysis, development, testing, and review phases. This approach enabled the team to implement 6 complete modules within the project timeline.</p>
+  </div>
+
+  <!-- System Limitations -->
+  <div class="about-block">
+    <div class="ab-title">System Limitations</div>
+    <div class="limitations-list">
+      <div class="lim-item"><span class="lim-dot"></span>Depends on YouTube API quota limitations (10,000 units/day default)</div>
+      <div class="lim-item"><span class="lim-dot"></span>Classification accuracy depends on training data quality and may vary by content domain</div>
+      <div class="lim-item"><span class="lim-dot"></span>Primarily focused on English-language comments in current version</div>
+      <div class="lim-item"><span class="lim-dot"></span>Analysis only — not a real-time moderation enforcement system</div>
+      <div class="lim-item"><span class="lim-dot"></span>Maximum 100 top-level comments fetched per analysis due to API limits</div>
+      <div class="lim-item"><span class="lim-dot"></span>Advanced modules (Topic, Intent, Trend) require additional RAM (4GB+ recommended)</div>
+    </div>
+  </div>
+
+  <!-- SDGs Section (NEW) -->
+  <div class="about-block">
+    <div class="ab-title">Sustainable Development Goals (SDGs)</div>
+    <div class="tech-grid" style="grid-template-columns: repeat(2, 1fr);">
+      <div class="tech-item">
+        <span class="tech-icon">💼</span>
+        <span class="tech-name">SDG 8</span>
+        <span class="tech-role">Decent Work &amp; Economic Growth</span>
+        <span style="font-size:0.7rem; margin-top:0.3rem;">Automates comment moderation, saves creator hours</span>
+      </div>
+      <div class="tech-item">
+        <span class="tech-icon">🔧</span>
+        <span class="tech-name">SDG 9</span>
+        <span class="tech-role">Industry, Innovation &amp; Infrastructure</span>
+        <span style="font-size:0.7rem; margin-top:0.3rem;">AI infrastructure with 183K+ vocab models</span>
+      </div>
+      <div class="tech-item">
+        <span class="tech-icon">📚</span>
+        <span class="tech-name">SDG 4</span>
+        <span class="tech-role">Quality Education</span>
+        <span style="font-size:0.7rem; margin-top:0.3rem;">Skills development &amp; digital literacy tool</span>
+      </div>
+      <div class="tech-item">
+        <span class="tech-icon">🤝</span>
+        <span class="tech-name">SDG 17</span>
+        <span class="tech-role">Partnerships for the Goals</span>
+        <span style="font-size:0.7rem; margin-top:0.3rem;">Academic-student-tech platform collaboration</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- References -->
+  <div class="about-block">
+    <div class="ab-title">References</div>
+    <div class="ref-list">
+      <div class="ref-item">Jurafsky, D., &amp; Martin, J. H. (2023). <em>Speech and Language Processing</em> (3rd ed.). Pearson Education.</div>
+      <div class="ref-item">Google Developers. <em>YouTube Data API v3 Documentation.</em> https://developers.google.com/youtube/v3</div>
+      <div class="ref-item">Chollet, F. (2018). <em>Deep Learning with Python.</em> Manning Publications.</div>
+      <div class="ref-item">Devlin, J., et al. (2019). BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding. <em>NAACL-HLT</em>, 4171–4186.</div>
+      <div class="ref-item">Pedregosa, F., et al. (2011). Scikit-learn: Machine Learning in Python. <em>JMLR</em>, 12, 2825–2830.</div>
+      <div class="ref-item">Ribeiro, M. H., et al. (2020). Characterizing and Detecting YouTube Spam Comments. <em>IEEE ICDMW</em>.</div>
+      <div class="ref-item">Grootendorst, M. (2022). BERTopic: Neural topic modeling with a class-based TF-IDF procedure. <em>arXiv preprint</em>.</div>
+    </div>
+  </div>
+</div>
+{% endblock %}

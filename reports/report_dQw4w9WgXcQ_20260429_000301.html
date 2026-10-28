@@ -1,0 +1,662 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Video Analysis Report - dQw4w9WgXcQ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: #e2e8f0;
+            padding: 40px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(17, 24, 39, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #ef4444, #f59e0b, #6366f1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        h2 {
+            color: #818cf8;
+            margin: 25px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #2d3748;
+        }
+        .header-info {
+            background: rgba(99, 102, 241, 0.1);
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            border-left: 4px solid #6366f1;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .stat-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.08);
+        }
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #818cf8;
+        }
+        .stat-label {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            margin-top: 5px;
+        }
+        .module-section {
+            margin-bottom: 30px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th {
+            background: rgba(99, 102, 241, 0.2);
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .badge-normal { background: #10b98120; color: #10b981; border: 1px solid #10b98140; }
+        .badge-spam { background: #f59e0b20; color: #f59e0b; border: 1px solid #f59e0b40; }
+        .badge-toxic { background: #ef444420; color: #ef4444; border: 1px solid #ef444440; }
+        .badge-bot { background: #f59e0b20; color: #f59e0b; border: 1px solid #f59e0b40; }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #2d3748;
+            font-size: 0.8rem;
+            color: #64748b;
+        }
+        .progress-bar {
+            height: 8px;
+            background: #2d3748;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 5px;
+        }
+        .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.3s;
+        }
+        .fill-normal { background: #10b981; }
+        .fill-spam { background: #f59e0b; }
+        .fill-toxic { background: #ef4444; }
+        .fill-bot { background: #f59e0b; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>📊 YouTube Video Analysis Report</h1>
+    <div class="header-info">
+        <p><strong>Video Title:</strong> Rick Astley - Never Gonna Give You Up (Official Video) (4K Remaster)</p>
+        <p><strong>Video ID:</strong> dQw4w9WgXcQ</p>
+        <p><strong>Analysis Date:</strong> 2026-04-29 00:03:01</p>
+        <p><strong>Total Comments Analyzed:</strong> 100</p>
+    </div>
+
+    <!-- Summary Stats -->
+    <h2>📈 Overall Statistics</h2>
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-value">100</div>
+            <div class="stat-label">Total Comments</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value" style="color: #10b981;">94%</div>
+            <div class="stat-label">Normal Comments</div>
+            <div class="progress-bar"><div class="progress-fill fill-normal" style="width: 94%"></div></div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value" style="color: #f59e0b;">1%</div>
+            <div class="stat-label">Spam Comments</div>
+            <div class="progress-bar"><div class="progress-fill fill-spam" style="width: 1%"></div></div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value" style="color: #ef4444;">5%</div>
+            <div class="stat-label">Toxic Comments</div>
+            <div class="progress-bar"><div class="progress-fill fill-toxic" style="width: 5%"></div></div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value" style="color: #f59e0b;">0</div>
+            <div class="stat-label">Suspected Bots</div>
+            <div class="progress-bar"><div class="progress-fill fill-bot" style="width: 0.0%"></div></div>
+        </div>
+    </div>
+
+    <!-- Toxic & Spam Section -->
+    <div class="module-section">
+        <h2>⚠️ Toxic & Spam Detection Results</h2>
+        <div class="stats-grid" style="grid-template-columns: repeat(3, 1fr);">
+            <div class="stat-card"><div class="stat-value" style="color: #10b981;">94</div><div class="stat-label">✅ Normal</div></div>
+            <div class="stat-card"><div class="stat-value" style="color: #f59e0b;">1</div><div class="stat-label">⚠️ Spam</div></div>
+            <div class="stat-card"><div class="stat-value" style="color: #ef4444;">5</div><div class="stat-label">🔥 Toxic</div></div>
+        </div>
+    </div>
+
+    <!-- Bot Detection Section -->
+    <div class="module-section">
+        <h2>🤖 Bot Detection Results</h2>
+        <div class="stats-grid" style="grid-template-columns: repeat(2, 1fr);">
+            <div class="stat-card"><div class="stat-value" style="color: #10b981;">100</div><div class="stat-label">👤 Human Comments</div></div>
+            <div class="stat-card"><div class="stat-value" style="color: #f59e0b;">0</div><div class="stat-label">🤖 Bot Comments</div></div>
+        </div>
+    </div>
+
+    <!-- Top Comments Table -->
+    <h2>💬 Comment Analysis Table</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Author</th>
+                <th>Comment</th>
+                <th>Category</th>
+                <th>Confidence</th>
+                <th>Bot Status</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <td>1</td>
+                <td>@YouTube</td>
+                <td>"can confirm: he never gave us up..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>2</td>
+                <td>@reynolds19</td>
+                <td>"Legends here still getting rickrolled in 2026👇..."</td>
+                <td><span class="badge badge-spam">SPAM</span></td>
+                <td>80%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>3</td>
+                <td>@Koichi09</td>
+                <td>"April fool&amp;#39;s national anthem..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>4</td>
+                <td>@ochkalov</td>
+                <td>"1987 : normal song &lt;br&gt;2026 : &lt;b&gt;national anthem of the universe&lt;/b&gt;..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>5</td>
+                <td>@HollyRenko</td>
+                <td>"I got rickrolled by chat gbt😭..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>6</td>
+                <td>@JB_OldVoltBike</td>
+                <td>"I got rickrolled by a link saying it got taken down...."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>7</td>
+                <td>@SonimodGT</td>
+                <td>"Petition to make this the national anthem of the internet..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>8</td>
+                <td>@Oatman69</td>
+                <td>"Gonna flag this for nudity so I can rick roll the YouTube staff..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>9</td>
+                <td>@tarziesgirl</td>
+                <td>"This video should not have an ad at the beginning. Defeats the Rick roll effect...."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>10</td>
+                <td>@hengchuanzhang9299</td>
+                <td>"My professor sent us this link as the &amp;quot;final exam key&amp;quot;..........."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>11</td>
+                <td>@ItzAravind</td>
+                <td>"&lt;b&gt;CBSE has humor&lt;/b&gt;..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>12</td>
+                <td>@insanelymaniac8522</td>
+                <td>"Getting rickrolled by a national examination board 🥀🥀&lt;br&gt;CBSE😭😭..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>13</td>
+                <td>@AARAVOS.MY.HUSBAND</td>
+                <td>"I GOT RIGGED-ROLLED!!..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>14</td>
+                <td>@LK-ht7qz</td>
+                <td>"Let’s put the meme aside, this is actually a banging song...."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>15</td>
+                <td>@bdr8823</td>
+                <td>"My algebra teacher said that this was a link to the test answers..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>16</td>
+                <td>@CinematicCaptures</td>
+                <td>"I didn&amp;#39;t get rickrolled today, I just really enjoy this song..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>17</td>
+                <td>@Caidence-r7e</td>
+                <td>"Gng who came from Loopit…..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>18</td>
+                <td>@lillyie</td>
+                <td>"Imagine if Rick Astley dies everyone would be too afraid to click a link to articles announcing his ..."</td>
+                <td><span class="badge badge-toxic">TOXIC</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>19</td>
+                <td>@JetpackGamer456</td>
+                <td>"Ok let’s be honest here&lt;br&gt;Rick rolling is the one meme that will never die..."</td>
+                <td><span class="badge badge-toxic">TOXIC</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>20</td>
+                <td>@himasekiwari155</td>
+                <td>"Damn got Rick rolled cause someone said it&amp;#39;s down, well I&amp;#39;ll gladly take it knowing it&amp;#39;s..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>21</td>
+                <td>@QaderOriginal</td>
+                <td>"pov: You Scanned a QR CODE..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>22</td>
+                <td>@SilentMemer</td>
+                <td>"Nobody can fool me anymore with this, I now remember every letter and number of the link..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>23</td>
+                <td>@Goldfish10191</td>
+                <td>"Am I the only one who came here again just to read the comments?..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>24</td>
+                <td>@cal3819</td>
+                <td>"When they put ads so you can&amp;#39;t rickroll anymore..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>25</td>
+                <td>@Pinky1980sGamerReal</td>
+                <td>"i got sent here BECAUSE OF A MII..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>26</td>
+                <td>@Siuraneta5</td>
+                <td>"&lt;b&gt;Vote Rick Astley for president&lt;/b&gt;&lt;br&gt;He will never:&lt;br&gt;&lt;br&gt;Give you up ✓&lt;br&gt;Let you down ✓&lt;br&gt;Ru..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>27</td>
+                <td>@candycake9531</td>
+                <td>"Is everyone going to ignore the fact that Rick Astley looks like a twelve year old boy but has a uni..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>28</td>
+                <td>@Kosmicd12</td>
+                <td>"feels like ive seen it a billion times..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>29</td>
+                <td>@-MurderHouse-</td>
+                <td>"I got Rick rolled by an animal crossing custom design…...."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>30</td>
+                <td>@Zenic.</td>
+                <td>"&lt;b&gt;1B people have been Rick Rolled, what an achievement&lt;/b&gt;..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>31</td>
+                <td>@mattarocket4261</td>
+                <td>"I just got rick rolled by scanning someone’s hairline..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>32</td>
+                <td>@DetectiveNyx</td>
+                <td>"when the link to waluigi hentai leads here:&lt;br&gt;i came seeking copper&lt;br&gt;&lt;b&gt;and i found gold&lt;/b&gt;..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>33</td>
+                <td>@secretJohn4k</td>
+                <td>"Legends still get Rick rolled on 2026😂..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>34</td>
+                <td>@comfyghost</td>
+                <td>"I looked up this video forgot that I did, clicked the tab and got rick rolled by my past self..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>35</td>
+                <td>@sethanderson6339</td>
+                <td>"found a QR code in my old middle school journal. I just rickrolled myself.&lt;br&gt;&lt;br&gt;&lt;br&gt;Edit: For ever..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>36</td>
+                <td>@tylerwilson447</td>
+                <td>"Wait, this isn’t the link to  finding out Obama’s last name..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>37</td>
+                <td>@imhamoo</td>
+                <td>"Who is in 2026?..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>38</td>
+                <td>@initsy</td>
+                <td>"Hold on this isn&amp;#39;t the national state anthem of the Soviet Union..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>39</td>
+                <td>@randomguyontheinternet1005</td>
+                <td>"wait this is not the link to Shrek X: Endgame..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>40</td>
+                <td>@thatonerandomginger</td>
+                <td>"Ah yes we meet once again..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>41</td>
+                <td>@jordanhill4900</td>
+                <td>"An ad started before it played and I felt the troller deserved it so I let the ad finish so I could ..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>42</td>
+                <td>@DeeF0rce1</td>
+                <td>"I Rickrolled my entire school.&lt;br&gt;&lt;br&gt;I still smile bc of it..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>43</td>
+                <td>@Timeworks</td>
+                <td>"There&amp;#39;s a reason this has over 600M views......"</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>44</td>
+                <td>@huvarda</td>
+                <td>"Wait this isn’t How To Rickroll People Tutorial...."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>45</td>
+                <td>@sammymanginlaud</td>
+                <td>"No way i got rick rolled because of qr code..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>46</td>
+                <td>@cypressmarch6632</td>
+                <td>"There are only two genders:&lt;br&gt;— People who copied  the link. &lt;br&gt;– People who clicked the link...."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>47</td>
+                <td>@OGDeity214</td>
+                <td>"People don&amp;#39;t Rickroll me:&lt;br&gt;Me: Fine, I&amp;#39;ll do it myself..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>48</td>
+                <td>@schmoyoho</td>
+                <td>"this isn&amp;#39;t over until all 7 billion people in the world are rick rolled - 1/7th there ❤️..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>49</td>
+                <td>@wesrer</td>
+                <td>"I was rickrolled by a QR code in payday 3..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>50</td>
+                <td>@Ionacyt</td>
+                <td>"Keep rickrolling people till we get 1 billion views...."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+        </tbody>
+    </table>
+    <div class="footer">
+        <p>Report generated by YouTube Video Analyzer (YT-VA)</p>
+        <p>Department of Software Engineering, UAJK | Final Year Project 2025-26</p>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,661 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Video Analysis Report - 9bZkp7q19f0</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: #e2e8f0;
+            padding: 40px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(17, 24, 39, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #ef4444, #f59e0b, #6366f1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        h2 {
+            color: #818cf8;
+            margin: 25px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #2d3748;
+        }
+        .header-info {
+            background: rgba(99, 102, 241, 0.1);
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            border-left: 4px solid #6366f1;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .stat-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.08);
+        }
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #818cf8;
+        }
+        .stat-label {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            margin-top: 5px;
+        }
+        .module-section {
+            margin-bottom: 30px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th {
+            background: rgba(99, 102, 241, 0.2);
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .badge-normal { background: #10b98120; color: #10b981; border: 1px solid #10b98140; }
+        .badge-spam { background: #f59e0b20; color: #f59e0b; border: 1px solid #f59e0b40; }
+        .badge-toxic { background: #ef444420; color: #ef4444; border: 1px solid #ef444440; }
+        .badge-bot { background: #f59e0b20; color: #f59e0b; border: 1px solid #f59e0b40; }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #2d3748;
+            font-size: 0.8rem;
+            color: #64748b;
+        }
+        .progress-bar {
+            height: 8px;
+            background: #2d3748;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 5px;
+        }
+        .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.3s;
+        }
+        .fill-normal { background: #10b981; }
+        .fill-spam { background: #f59e0b; }
+        .fill-toxic { background: #ef4444; }
+        .fill-bot { background: #f59e0b; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>📊 YouTube Video Analysis Report</h1>
+    <div class="header-info">
+        <p><strong>Video ID:</strong> 9bZkp7q19f0</p>
+        <p><strong>Analysis Date:</strong> 2026-04-28 23:32:08</p>
+        <p><strong>Total Comments Analyzed:</strong> 100</p>
+    </div>
+
+    <!-- Summary Stats -->
+    <h2>📈 Overall Statistics</h2>
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-value">100</div>
+            <div class="stat-label">Total Comments</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value" style="color: #10b981;">97%</div>
+            <div class="stat-label">Normal Comments</div>
+            <div class="progress-bar"><div class="progress-fill fill-normal" style="width: 97%"></div></div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value" style="color: #f59e0b;">1%</div>
+            <div class="stat-label">Spam Comments</div>
+            <div class="progress-bar"><div class="progress-fill fill-spam" style="width: 1%"></div></div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value" style="color: #ef4444;">2%</div>
+            <div class="stat-label">Toxic Comments</div>
+            <div class="progress-bar"><div class="progress-fill fill-toxic" style="width: 2%"></div></div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value" style="color: #f59e0b;">1</div>
+            <div class="stat-label">Suspected Bots</div>
+            <div class="progress-bar"><div class="progress-fill fill-bot" style="width: 1.0%"></div></div>
+        </div>
+    </div>
+
+    <!-- Toxic & Spam Section -->
+    <div class="module-section">
+        <h2>⚠️ Toxic & Spam Detection Results</h2>
+        <div class="stats-grid" style="grid-template-columns: repeat(3, 1fr);">
+            <div class="stat-card"><div class="stat-value" style="color: #10b981;">97</div><div class="stat-label">✅ Normal</div></div>
+            <div class="stat-card"><div class="stat-value" style="color: #f59e0b;">1</div><div class="stat-label">⚠️ Spam</div></div>
+            <div class="stat-card"><div class="stat-value" style="color: #ef4444;">2</div><div class="stat-label">🔥 Toxic</div></div>
+        </div>
+    </div>
+
+    <!-- Bot Detection Section -->
+    <div class="module-section">
+        <h2>🤖 Bot Detection Results</h2>
+        <div class="stats-grid" style="grid-template-columns: repeat(2, 1fr);">
+            <div class="stat-card"><div class="stat-value" style="color: #10b981;">99</div><div class="stat-label">👤 Human Comments</div></div>
+            <div class="stat-card"><div class="stat-value" style="color: #f59e0b;">1</div><div class="stat-label">🤖 Bot Comments</div></div>
+        </div>
+    </div>
+
+    <!-- Top Comments Table -->
+    <h2>💬 Comment Analysis Table</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Author</th>
+                <th>Comment</th>
+                <th>Category</th>
+                <th>Confidence</th>
+                <th>Bot Status</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <td>1</td>
+                <td>@aashutoshrimal1497</td>
+                <td>"For those who dont know: *This song literally broke the internet…..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>2</td>
+                <td>@yyumass</td>
+                <td>"PSY: Created a Korean song&lt;br&gt;&lt;br&gt;99.99% of listeners: &lt;b&gt;Not Korean&lt;/b&gt;..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>3</td>
+                <td>@thecrustyonion5935</td>
+                <td>"Me in 2012: ha funny song&lt;br&gt;&lt;br&gt;Me in 2019: &lt;b&gt;cries in nostalgia&lt;/b&gt;..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>4</td>
+                <td>@xaviert.123</td>
+                <td>"HOW are there comments from 30 minutes ago, even today??..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>5</td>
+                <td>@Quartz5005</td>
+                <td>"This guy could&amp;#39;ve said &amp;#39;Vote me for president&amp;#39; and everyone would&amp;#39;ve voted..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>6</td>
+                <td>@Iblamegenetics.0</td>
+                <td>"This is the closest we were to achieve world peace..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>7</td>
+                <td>@superkamehameha1744</td>
+                <td>"Thank you Psy for preventing the apocalypse by making the Honmoon Golden back in 2012..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>8</td>
+                <td>@스몰바</td>
+                <td>"그 사람때문에 왔으면 개추..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>9</td>
+                <td>@divaalfirman3295</td>
+                <td>"This was basically Planet Earth&amp;#39;s theme song..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>10</td>
+                <td>@_Raecious_</td>
+                <td>"Bro almost united the whole world 😭😭..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>11</td>
+                <td>@feesh8198</td>
+                <td>"Are we seriously going to ignore how well that child danced..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>12</td>
+                <td>@realDewSplatGum</td>
+                <td>"North Korea: We have missiles.&lt;br&gt;&lt;br&gt;South Korea:..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>13</td>
+                <td>@satibeza1426</td>
+                <td>"Let&amp;#39;s pretend this song just came out and everything is right in the world again..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>14</td>
+                <td>@aotd6118</td>
+                <td>"2012: &lt;b&gt;nope&lt;/b&gt;&lt;br&gt;&lt;br&gt;2019: &lt;b&gt;yes it&amp;#39;s time to watch this&lt;/b&gt;..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>15</td>
+                <td>@Cloudy_533</td>
+                <td>"요즘 다르게 들리는 노래 1위 ㅋㅋ..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>85%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>16</td>
+                <td>@Hannah-lr4le</td>
+                <td>"2019 after 6 years! &lt;br&gt;&lt;br&gt;Do you remember world&amp;#39;s ending? &lt;br&gt;7M = 3.3B..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>17</td>
+                <td>@unoriginal6958</td>
+                <td>"i still remember how huge this song was.  literally everyone was talking about it..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>18</td>
+                <td>@Sahil_Pathan_9292</td>
+                <td>"If aliens ever saw this, they will think this guy is our leader...."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>19</td>
+                <td>@JHPII</td>
+                <td>"13 years later, if you&amp;#39;re watching this you&amp;#39;re a legend...."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>20</td>
+                <td>@cloutelfin8323</td>
+                <td>"This song was played EVERYWHERE when I was little. The memories dudeeee..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>21</td>
+                <td>@kateeditsmusicalsforfun</td>
+                <td>"I swear this song brought world peace 😭..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>22</td>
+                <td>@rationalrad6950</td>
+                <td>"I&amp;#39;m looking back at 6 year old me trying to sing the lyrics thinking they were english..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>23</td>
+                <td>@VikrantSingh-i5g</td>
+                <td>"Anybody on 2026............ &lt;br&gt;Vote plzz..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>24</td>
+                <td>@Dr.Supreme817</td>
+                <td>"Who would believe 12 years later this song is still popping..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>25</td>
+                <td>@boomcruiser</td>
+                <td>"Am I the only one who comes back to this video, just to see what the views are at?..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>26</td>
+                <td>@tutusiatutusia1188</td>
+                <td>"No worries you&amp;#39;re not the only one here listening to this masterpiece in November 2025..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>27</td>
+                <td>@MercuryLeeset</td>
+                <td>"2012년: 와 미래에는 또 어떤 음악이 나올까?&lt;br&gt;2026년: 옵 옵 옵 에~~~~~..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>28</td>
+                <td>@OwenMcBrideTrademarkPending</td>
+                <td>"This song might actually be talked abt in future history classes..."</td>
+                <td><span class="badge badge-toxic">TOXIC</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>29</td>
+                <td>@1novqq</td>
+                <td>"its been 10 years and this is still one of the worlds biggest hits😭..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>30</td>
+                <td>@sunnydayz3396</td>
+                <td>"Half of the humans on Earth had seen this music video...."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>31</td>
+                <td>@unitfps</td>
+                <td>"6 billion views. the entire world knows this legendary song...."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>32</td>
+                <td>@aidenrhoads3801</td>
+                <td>"2019, laying in bed trying to sleep and suddenly this popped into my mind..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>33</td>
+                <td>@JohnDiara-w1v</td>
+                <td>"Book of the century - &amp;quot;Night in Zagreb&amp;quot; by Medvidović &lt;br&gt;Song of the century - Gangnam St..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>34</td>
+                <td>@Shubham-dm8ws</td>
+                <td>"Everyone have their own version of lyrics of this song inside their mind..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>35</td>
+                <td>@mrecmis_nyfrax</td>
+                <td>"Who&amp;#39;s in April 2026?..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>36</td>
+                <td>@Cloud-if5hx</td>
+                <td>"How can there be 2.000.000.000 views if there are only 6 dragonballs?!!1?Eleven?!111?!questionmark!1..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>37</td>
+                <td>@Biyeer31</td>
+                <td>"Una gran obra de arte, han pasado muchos años y sigue siendo brutal XD..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>38</td>
+                <td>@ttukkhho</td>
+                <td>"인간적인 인간여쨔!!..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>39</td>
+                <td>@EliteShot</td>
+                <td>"🦍🦍 KING KONGNAM STYLE! 🦍🦍..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>40</td>
+                <td>@zoesherlock</td>
+                <td>"still can&amp;#39;t believe how many views this video has got and is getting..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>41</td>
+                <td>@subaghoul4938</td>
+                <td>"2012=wow this is amazing song.&lt;br&gt;2017=let&amp;#39;s see how many views these song has.😂😂..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>42</td>
+                <td>@Andrew-d3c2u</td>
+                <td>"2026년에서 보는 사람…?( 없겠징…)..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>43</td>
+                <td>@omerbareket7553</td>
+                <td>"who comes to check how much views this song has?..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>44</td>
+                <td>@Fp_RealC18</td>
+                <td>"Who else came just to see how many views this vid has?..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>45</td>
+                <td>@aributera6241</td>
+                <td>"Wow it&amp;#39;s been a long time since I had heard this song.   I&amp;#39;m typing this in December 2, 2016..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>46</td>
+                <td>@SimraYuhanitha</td>
+                <td>"Thought I was revisiting history, but this comment section is still in the present...."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>47</td>
+                <td>@landonnorris8364</td>
+                <td>"WHO IS WATCHING THIS INSTEAD OF STUDYING FOR EXAMS..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>48</td>
+                <td>@safefrerichssafefrerichs7724</td>
+                <td>"WHO is here in 2025 and soon 2026..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>49</td>
+                <td>@GamingOFran</td>
+                <td>"WHO IS WATCHING IT NOW, AT 28TH FEBRUARY..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+            <tr>
+                <td>50</td>
+                <td>@shahinak1412</td>
+                <td>"Anyone 2026 ?..."</td>
+                <td><span class="badge badge-normal">NORMAL</span></td>
+                <td>75%</td>
+                <td><span class="badge badge-normal">✓ HUMAN</span></td>
+            </tr>
+
+        </tbody>
+    </table>
+    <div class="footer">
+        <p>Report generated by YouTube Video Analyzer (YT-VA)</p>
+        <p>Department of Software Engineering, UAJK | Final Year Project 2025-26</p>
+    </div>
+</div>
+</body>
+</html>

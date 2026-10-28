@@ -1,0 +1,309 @@
+{% extends "base.html" %}
+{% block title %}Spam &amp; Toxic Detection{% endblock %}
+{% set active_page = 'spam' %}
+
+{% block extra_head %}
+<script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+<style>
+  /* Sample buttons for toxic/spam tester */
+  .sample-buttons {
+    margin-top: 8px;
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+  .sample-btn {
+    background: rgba(99,102,241,0.1);
+    border: 1px solid rgba(99,102,241,0.3);
+    color: #818cf8;
+    font-size: 0.7rem;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .sample-btn:hover {
+    background: rgba(99,102,241,0.2);
+    border-color: #6366f1;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="page-wrap">
+  <div class="page-header">
+    <div class="page-header-left">
+      <h1>Toxic &amp; Spam Detection</h1>
+      <p>Deep Learning classification using a trained <strong>Keras model</strong> with tokenized sequences. Detects abusive, offensive, and promotional spam comments to support content moderation.</p>
+    </div>
+    <div class="page-header-right">
+      <div class="live-test-box">
+        <label class="lt-label">🔬 Test a comment live</label>
+        <textarea id="liveInput" class="lt-textarea" placeholder="Type any comment here to classify it instantly..."></textarea>
+        
+        <!-- Sample buttons for quick testing -->
+        <div class="sample-buttons">
+          <button class="sample-btn" onclick="setToxicSample('You are stupid and your video is trash')">Toxic</button>
+          <button class="sample-btn" onclick="setToxicSample('check out my channel for free subscribers')">Spam</button>
+          <button class="sample-btn" onclick="setToxicSample('Great video thanks for sharing')">Normal</button>
+          <button class="sample-btn" onclick="setToxicSample('I hope you lose your job')">Threat</button>
+          <button class="sample-btn" onclick="setToxicSample('subscribe to me i sub back')">Sub4Sub</button>
+          <button class="sample-btn" onclick="setToxicSample('click here for free robux')">Scam</button>
+        </div>
+        
+        <button class="lt-btn" id="liveBtn">Classify</button>
+        <div class="lt-result" id="liveResult" style="display:none"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="noData" class="no-data-state">
+    <div class="nd-icon">🔍</div>
+    <h3>No analysis data found</h3>
+    <p>Go to the home page, paste a YouTube URL, and click Analyze first.</p>
+    <a href="/" class="nd-btn">Go to Home Page →</a>
+  </div>
+
+  <div id="resultsWrap" style="display:none">
+    <div class="stats-row" id="statsRow"></div>
+
+    <div class="two-col" style="margin-top:1.5rem">
+      <div class="card chart-card">
+        <div class="card-title">Comment Classification Distribution</div>
+        <div id="pieChart" style="height:280px"></div>
+      </div>
+      <div class="card legend-card">
+        <div class="card-title">Classification Criteria</div>
+        <div class="criteria-list">
+          <div class="criteria-item">
+            <span class="crit-dot" style="background:#10b981"></span>
+            <div><strong>Normal</strong><p>Genuine comments: feedback, questions, appreciation, constructive criticism.</p></div>
+          </div>
+          <div class="criteria-item">
+            <span class="crit-dot" style="background:#f59e0b"></span>
+            <div><strong>Spam</strong><p>Promotional links, channel self-promotion, repetitive bait, giveaway scams.</p></div>
+          </div>
+          <div class="criteria-item">
+            <span class="crit-dot" style="background:#ef4444"></span>
+            <div><strong>Toxic</strong><p>Abusive, offensive, hateful language targeting creators or other users.</p></div>
+          </div>
+          <div class="criteria-sep"></div>
+          <div class="model-info">
+            <div class="mi-row"><span class="mi-label">Algorithm</span><span class="mi-val">Keras Deep Learning (LSTM/Dense)</span></div>
+            <div class="mi-row"><span class="mi-label">Input</span><span class="mi-val">Tokenized + padded sequences</span></div>
+            <div class="mi-row"><span class="mi-label">Signal Boost</span><span class="mi-val">Rule-based NLP pattern overlay</span></div>
+            <div class="mi-row"><span class="mi-label">Library</span><span class="mi-val">TensorFlow / Keras</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="filter-bar">
+      <span class="filter-label">Filter:</span>
+      <button class="filter-btn active" data-filter="all">All Comments</button>
+      <button class="filter-btn" data-filter="normal" style="--fc:#10b981">✓ Normal</button>
+      <button class="filter-btn" data-filter="spam" style="--fc:#f59e0b">⚠ Spam</button>
+      <button class="filter-btn" data-filter="toxic" style="--fc:#ef4444">✕ Toxic</button>
+      <div class="filter-search-wrap">
+        <input type="text" id="searchInput" class="filter-search" placeholder="Search comments..."/>
+      </div>
+    </div>
+
+    <div class="card table-card">
+      <div class="table-scroll">
+        <table class="comments-table">
+          <thead>
+            <tr>
+              <th style="width:46%">Comment</th>
+              <th style="width:10%">Category</th>
+              <th style="width:12%">Confidence</th>
+              <th style="width:13%">Signals</th>
+              <th style="width:11%">Author</th>
+              <th style="width:8%">Likes</th>
+            </tr>
+          </thead>
+          <tbody id="commentsTbody"></tbody>
+        </table>
+      </div>
+      <div class="table-footer"><span id="tableCount"></span></div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  let allComments  = [];
+  let currentFilter = 'all';
+
+  const stored = sessionStorage.getItem('ytva_result');
+  if (stored) {
+    const data   = JSON.parse(stored);
+    allComments  = data.comments || [];
+    document.getElementById('noData').style.display = 'none';
+    document.getElementById('resultsWrap').style.display = 'block';
+    renderAll(data);
+  }
+
+  function renderAll(data) { 
+    renderStats(data.summary); 
+    renderChart(data.summary); 
+    renderTable(allComments); 
+  }
+
+  function renderStats(s) {
+    document.getElementById('statsRow').innerHTML = `
+      <div class="stat-card"><div class="sc-val">${s.total_comments}</div><div class="sc-key">Total Comments</div><div class="sc-sub">Fetched via YouTube API</div></div>
+      <div class="stat-card" style="--accent:#10b981"><div class="sc-val" style="color:#10b981">${s.normal_count}</div><div class="sc-key">Normal Comments</div><div class="sc-sub" style="color:#10b981">${s.normal_pct}% of total</div></div>
+      <div class="stat-card" style="--accent:#f59e0b"><div class="sc-val" style="color:#f59e0b">${s.spam_count}</div><div class="sc-key">Spam Comments</div><div class="sc-sub" style="color:#f59e0b">${s.spam_pct}% of total</div></div>
+      <div class="stat-card" style="--accent:#ef4444"><div class="sc-val" style="color:#ef4444">${s.toxic_count}</div><div class="sc-key">Toxic Comments</div><div class="sc-sub" style="color:#ef4444">${s.toxic_pct}% of total</div></div>
+    `;
+  }
+
+  function renderChart(s) {
+    Plotly.newPlot('pieChart', [{
+      values: [s.normal_count, s.spam_count, s.toxic_count],
+      labels: ['Normal', 'Spam', 'Toxic'], 
+      type: 'pie', 
+      hole: 0.6,
+      marker: { colors: ['#10b981', '#f59e0b', '#ef4444'] },
+      textinfo: 'label+percent', 
+      textfont: { color: '#e2e8f0', family: 'DM Sans', size: 13 },
+    }], {
+      paper_bgcolor: 'transparent', 
+      plot_bgcolor: 'transparent',
+      font: { color: '#94a3b8', family: 'DM Sans' },
+      showlegend: false, 
+      margin: { l:20, r:20, t:20, b:20 }
+    }, { responsive: true, displayModeBar: false });
+  }
+
+  function renderTable(comments) {
+    const searchVal = document.getElementById('searchInput').value.toLowerCase();
+    const filtered  = comments.filter(c => {
+      const cat = c.label || c.category || 'normal';
+      return (currentFilter === 'all' || cat === currentFilter)
+          && (!searchVal || c.text.toLowerCase().includes(searchVal));
+    });
+
+    document.getElementById('tableCount').textContent =
+      `Showing ${filtered.length} of ${comments.length} comments`;
+
+    const tbody = document.getElementById('commentsTbody');
+    if (!filtered.length) {
+      tbody.innerHTML = `<tr><td colspan="6" class="empty-row">No comments match this filter.</td></tr>`;
+      return;
+    }
+    tbody.innerHTML = filtered.map(c => {
+      const cat     = c.label || c.category || 'normal';
+      const likes   = c.likes !== undefined ? c.likes : (c.likeCount || 0);
+      const signals = c.signals || {};
+      return `
+        <tr class="comment-row cat-${cat}">
+          <td class="comment-text-cell">${escapeHtml(c.text)}</td>
+          <td>${badgeHTML(cat)}</td>
+          <td>${confidenceBar(c.confidence, cat)}</td>
+          <td class="signal-cell">${signalTags(signals)}</td>
+          <td class="author-cell">${escapeHtml(c.author)}</td>
+          <td class="likes-cell">${likes}</td>
+        </tr>`;
+    }).join('');
+  }
+
+  function badgeHTML(cat) {
+    const map = { 
+      normal: ['✓ Normal', '#10b981'], 
+      spam: ['⚠ Spam', '#f59e0b'], 
+      toxic: ['✕ Toxic', '#ef4444'] 
+    };
+    const [label, color] = map[cat] || ['? Unknown', '#888'];
+    return `<span class="badge" style="--bc:${color}">${label}</span>`;
+  }
+
+  function confidenceBar(conf, cat) {
+    const c = { normal:'#10b981', spam:'#f59e0b', toxic:'#ef4444' }[cat] || '#64748b';
+    return `<div class="conf-wrap">
+      <div class="conf-bar-bg"><div class="conf-bar-fill" style="width:${conf}%;background:${c}"></div></div>
+      <span class="conf-text">${conf}%</span>
+    </div>`;
+  }
+
+  function signalTags(s) {
+    const tags = [];
+    if (s.has_url)        tags.push('<span class="sig-tag sig-url">URL</span>');
+    if (s.spam_signals > 0)  tags.push(`<span class="sig-tag sig-spam">spam×${s.spam_signals}</span>`);
+    if (s.toxic_signals > 0) tags.push(`<span class="sig-tag sig-toxic">toxic×${s.toxic_signals}</span>`);
+    if (s.has_emoji_spam) tags.push('<span class="sig-tag sig-emoji">emoji</span>');
+    if (s.exclamations > 2)  tags.push(`<span class="sig-tag sig-excl">!!!</span>`);
+    return tags.join('') || '<span class="sig-none">—</span>';
+  }
+
+  function escapeHtml(t) {
+    return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  // Filter buttons
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentFilter = btn.dataset.filter;
+      renderTable(allComments);
+    });
+  });
+  
+  // Search input
+  document.getElementById('searchInput').addEventListener('input', () => renderTable(allComments));
+
+  // Helper function to set sample text for toxic/spam tester
+  function setToxicSample(text) {
+    document.getElementById('liveInput').value = text;
+    document.getElementById('liveBtn').click();
+  }
+
+  // Live single-comment classifier
+  document.getElementById('liveBtn').addEventListener('click', async () => {
+    const text      = document.getElementById('liveInput').value.trim();
+    if (!text) return;
+    
+    const resultDiv = document.getElementById('liveResult');
+    resultDiv.style.display = 'block';
+    resultDiv.innerHTML = '<span class="lt-loading">Classifying…</span>';
+    
+    try {
+      const resp = await fetch('/api/classify_single', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text }),
+      });
+      const data      = await resp.json();
+      const colorMap  = { normal:'#10b981', spam:'#f59e0b', toxic:'#ef4444' };
+      const color     = colorMap[data.label] || '#888';
+      const probs     = data.ml_probabilities || {};
+      const signals   = data.signals || {};
+      
+      resultDiv.innerHTML = `
+        <div class="lt-res-badge" style="border-color:${color};color:${color}">
+          ${(data.label || 'unknown').toUpperCase()} — ${data.confidence}% confidence
+        </div>
+        <div class="lt-probs">
+          ${Object.entries(probs).map(([k,v]) =>
+            `<span class="lt-prob"><span class="lt-pk" style="color:${colorMap[k]}">${k}</span> ${v}%</span>`
+          ).join('')}
+        </div>
+        <div class="lt-sig-row">
+          ${signals.spam_signals  ? `<span class="sig-tag sig-spam">spam signals: ${signals.spam_signals}</span>`   : ''}
+          ${signals.toxic_signals ? `<span class="sig-tag sig-toxic">toxic signals: ${signals.toxic_signals}</span>` : ''}
+          ${signals.has_url       ? `<span class="sig-tag sig-url">URL detected</span>`                             : ''}
+        </div>`;
+    } catch {
+      resultDiv.innerHTML = '<span style="color:#ef4444">Error connecting to Flask backend.</span>';
+    }
+  });
+  
+  // Allow Ctrl+Enter to trigger test
+  document.getElementById('liveInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter' && e.ctrlKey) document.getElementById('liveBtn').click();
+  });
+</script>
+{% endblock %}

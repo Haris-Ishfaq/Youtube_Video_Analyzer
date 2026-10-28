@@ -1,0 +1,181 @@
+{% extends "base.html" %}
+{% block title %}Intent Analysis{% endblock %}
+{% set active_page = 'intents' %}
+
+{% block extra_head %}
+<script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+<style>
+  .intent-pie-container {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+  }
+  .intent-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+  .intent-question { background: rgba(99,102,241,0.2); color: #818cf8; }
+  .intent-feedback { background: rgba(16,185,129,0.2); color: #10b981; }
+  .intent-hate { background: rgba(239,68,68,0.2); color: #ef4444; }
+  .intent-promotion { background: rgba(245,158,11,0.2); color: #f59e0b; }
+  .intent-appreciation { background: rgba(16,185,129,0.2); color: #10b981; }
+  .intent-criticism { background: rgba(245,158,11,0.2); color: #f59e0b; }
+  .intent-support { background: rgba(16,185,129,0.2); color: #10b981; }
+  .intent-neutral { background: rgba(100,116,139,0.2); color: #94a3b8; }
+  .intent-suggestion { background: rgba(99,102,241,0.2); color: #818cf8; }
+  .intent-spam { background: rgba(239,68,68,0.2); color: #ef4444; }
+  .intent-disagreement { background: rgba(245,158,11,0.2); color: #f59e0b; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="page-wrap">
+  <div class="page-header">
+    <div class="page-header-left">
+      <h1>Intent Prediction Analysis</h1>
+      <p>Zero-shot classification that understands what users really mean - questions, feedback, promotion, hate speech, and more. No training required!</p>
+    </div>
+  </div>
+
+  <div id="noData" class="no-data-state">
+    <div class="nd-icon">💬</div>
+    <h3>No analysis data found</h3>
+    <p>Go to the home page, paste a YouTube URL, and click Analyze first.</p>
+    <a href="/" class="nd-btn">Go to Home Page →</a>
+  </div>
+
+  <div id="intentsContent" style="display:none">
+    <div class="stats-row" id="intentStats" style="margin-bottom:1.25rem"></div>
+
+    <div class="two-col" style="margin-bottom:1.25rem">
+      <div class="intent-pie-container">
+        <div class="card-title">Intent Distribution</div>
+        <div id="intentPieChart" style="height: 300px;"></div>
+      </div>
+      <div class="card legend-card">
+        <div class="card-title">Intent Categories</div>
+        <div class="criteria-list">
+          <div class="criteria-item"><span class="crit-dot" style="background:#818cf8"></span><div><strong>Question</strong><p>Asking for information or clarification</p></div></div>
+          <div class="criteria-item"><span class="crit-dot" style="background:#10b981"></span><div><strong>Feedback/Appreciation</strong><p>Positive or constructive opinions</p></div></div>
+          <div class="criteria-item"><span class="crit-dot" style="background:#ef4444"></span><div><strong>Hate/Spam</strong><p>Toxic content or promotional spam</p></div></div>
+          <div class="criteria-item"><span class="crit-dot" style="background:#f59e0b"></span><div><strong>Promotion/Criticism</strong><p>Self-promotion or negative feedback</p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card table-card">
+      <div style="padding:1.5rem 1.5rem .5rem">
+        <div class="card-title">Comments with Intent Analysis</div>
+      </div>
+      <div class="table-scroll">
+        <table class="comments-table">
+          <thead>
+            <tr>
+              <th style="width:50%">Comment</th>
+              <th>Intent</th>
+              <th>Confidence</th>
+              <th>Author</th>
+            </tr>
+          </thead>
+          <tbody id="intentsTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  const stored = sessionStorage.getItem('ytva_result');
+  if (stored) {
+    const data = JSON.parse(stored);
+    document.getElementById('noData').style.display = 'none';
+    document.getElementById('intentsContent').style.display = 'block';
+    analyzeIntents(data.comments);
+  }
+
+  async function analyzeIntents(comments) {
+    try {
+      const response = await fetch('/api/intent_prediction', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ comments: comments })
+      });
+      
+      const result = await response.json();
+      
+      if (result.success) {
+        renderIntentResults(result);
+      } else {
+        document.getElementById('intentsTableBody').innerHTML = `<tr><td colspan="4" class="empty-row">❌ ${result.error || 'Intent prediction failed'}</td></tr>`;
+      }
+    } catch (error) {
+      console.error('Intent analysis error:', error);
+      document.getElementById('intentsTableBody').innerHTML = '<tr><td colspan="4" class="empty-row">❌ Error connecting to server</td></tr>';
+    }
+  }
+
+  function renderIntentResults(result) {
+    // Stats
+    const dist = result.summary.distribution;
+    const sortedIntents = Object.entries(dist).sort((a,b) => b[1] - a[1]);
+    
+    document.getElementById('intentStats').innerHTML = `
+      <div class="stat-card"><div class="sc-val">${result.total_comments}</div><div class="sc-key">Total Comments</div><div class="sc-sub">Analyzed</div></div>
+      <div class="stat-card"><div class="sc-val">${result.summary.reliable_percentage}%</div><div class="sc-key">High Confidence</div><div class="sc-sub">Predictions >60%</div></div>
+      <div class="stat-card"><div class="sc-val">${sortedIntents[0]?.[1] || 0}%</div><div class="sc-key">Top Intent</div><div class="sc-sub">${sortedIntents[0]?.[0] || 'N/A'}</div></div>
+    `;
+
+    // Pie chart
+    const labels = Object.keys(dist);
+    const values = Object.values(dist);
+    const colors = labels.map(l => {
+      const map = { question: '#818cf8', feedback: '#10b981', appreciation: '#10b981', 
+                    hate: '#ef4444', spam: '#ef4444', promotion: '#f59e0b', 
+                    criticism: '#f59e0b', neutral: '#94a3b8', suggestion: '#818cf8',
+                    support: '#10b981', disagreement: '#f59e0b' };
+      return map[l] || '#6366f1';
+    });
+
+    Plotly.newPlot('intentPieChart', [{
+      values: values,
+      labels: labels,
+      type: 'pie',
+      hole: 0.5,
+      marker: { colors: colors },
+      textinfo: 'label+percent',
+      textfont: { color: '#e2e8f0', size: 12 }
+    }], {
+      paper_bgcolor: 'transparent',
+      plot_bgcolor: 'transparent',
+      font: { color: '#94a3b8' },
+      showlegend: false,
+      margin: { l:20, r:20, t:20, b:20 }
+    }, { responsive: true, displayModeBar: false });
+
+    // Table
+    const tbody = document.getElementById('intentsTableBody');
+    tbody.innerHTML = result.comments.slice(0, 50).map(c => {
+      const intent = c.intent || {};
+      const intentClass = `intent-${intent.intent || 'neutral'}`;
+      const intentName = intent.intent || 'neutral';
+      const confidence = intent.confidence || 0;
+      
+      return `<tr>
+        <td class="comment-text-cell">${escapeHtml(c.text.substring(0, 120))}${c.text.length > 120 ? '…' : ''}</td>
+        <td><span class="intent-badge ${intentClass}">${intentName}</span></td>
+        <td><div class="conf-wrap"><div class="conf-bar-bg"><div class="conf-bar-fill" style="width:${confidence}%;background:#6366f1"></div></div><span class="conf-text">${confidence}%</span></div></td>
+        <td class="author-cell">${escapeHtml(c.author)}</td>
+      </tr>`;
+    }).join('');
+  }
+
+  function escapeHtml(t) {
+    return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+</script>
+{% endblock %}

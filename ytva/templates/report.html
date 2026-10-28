@@ -1,0 +1,762 @@
+{% extends "base.html" %}
+{% block title %}Analysis Report{% endblock %}
+{% set active_page = 'report' %}
+
+{% block extra_head %}
+<style>
+    .report-container {
+        background: var(--card);
+        border-radius: var(--radius);
+        padding: 1.5rem;
+        margin-top: 1rem;
+    }
+    
+    .report-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--border);
+    }
+    
+    .report-title {
+        background: linear-gradient(135deg, #ef4444, #f59e0b, #6366f1);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+    }
+    
+    .btn-group {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+    }
+    
+    .report-btn {
+        background: linear-gradient(135deg, var(--accent), #4f46e5);
+        border: none;
+        border-radius: var(--radius-sm);
+        color: white;
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+        cursor: pointer;
+        transition: all 0.2s;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .report-btn:hover {
+        transform: translateY(-2px);
+        opacity: 0.9;
+    }
+    
+    .report-btn.download {
+        background: linear-gradient(135deg, #10b981, #059669);
+    }
+    
+    .report-stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .report-stat-card {
+        background: rgba(255,255,255,0.03);
+        border-radius: var(--radius-sm);
+        padding: 1rem;
+        text-align: center;
+        border: 1px solid var(--border);
+    }
+    
+    .report-stat-value {
+        font-size: 1.8rem;
+        font-weight: 800;
+    }
+    
+    .report-stat-label {
+        font-size: 0.7rem;
+        color: var(--muted2);
+        margin-top: 0.25rem;
+    }
+    
+    .section-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--accent2);
+        margin: 1.5rem 0 1rem 0;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid var(--border);
+    }
+    
+    /* Suggestion Cards */
+    .suggestion-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .suggestion-card {
+        background: rgba(99,102,241,0.08);
+        border-radius: var(--radius-sm);
+        padding: 1rem;
+        border-left: 3px solid;
+        transition: all 0.3s;
+    }
+    
+    .suggestion-card:hover {
+        transform: translateY(-3px);
+        background: rgba(99,102,241,0.12);
+    }
+    
+    .suggestion-card.urgent {
+        border-left-color: #ef4444;
+    }
+    .suggestion-card.high {
+        border-left-color: #f59e0b;
+    }
+    .suggestion-card.medium {
+        border-left-color: #10b981;
+    }
+    .suggestion-card.low {
+        border-left-color: #6366f1;
+    }
+    
+    .suggestion-title {
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .suggestion-desc {
+        font-size: 0.8rem;
+        color: var(--muted2);
+    }
+    
+    .priority-badge {
+        display: inline-block;
+        padding: 0.2rem 0.5rem;
+        border-radius: 20px;
+        font-size: 0.65rem;
+        font-weight: 600;
+        margin-top: 0.5rem;
+    }
+    
+    .priority-urgent { background: #ef444420; color: #ef4444; }
+    .priority-high { background: #f59e0b20; color: #f59e0b; }
+    .priority-medium { background: #10b98120; color: #10b981; }
+    .priority-low { background: #6366f120; color: #818cf8; }
+    
+    /* Viral Score */
+    .viral-score-container {
+        background: linear-gradient(135deg, #1a1a2e, #16213e);
+        border-radius: var(--radius);
+        padding: 1.25rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+    
+    .viral-score-circle {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto 1rem;
+    }
+    
+    .viral-score-text {
+        font-size: 2.5rem;
+        font-weight: 800;
+    }
+    
+    .viral-label {
+        font-size: 0.8rem;
+        color: var(--muted2);
+    }
+    
+    .improvement-item {
+        background: rgba(255,255,255,0.03);
+        padding: 0.75rem;
+        border-radius: var(--radius-sm);
+        margin-bottom: 0.5rem;
+    }
+    
+    .improvement-check {
+        color: #10b981;
+        margin-right: 0.5rem;
+    }
+    
+    .improvement-cross {
+        color: #ef4444;
+        margin-right: 0.5rem;
+    }
+    
+    /* Report table specific styles */
+    .comments-table {
+        width: 100%;
+        border-collapse: collapse;
+        table-layout: fixed;
+    }
+
+    .comments-table th,
+    .comments-table td {
+        padding: 10px 8px;
+        border-bottom: 1px solid var(--border);
+        vertical-align: top;
+    }
+
+    .comments-table th:first-child,
+    .comments-table td:first-child {
+        width: 5%;
+        text-align: center;
+    }
+
+    .comments-table th:nth-child(2),
+    .comments-table td:nth-child(2) {
+        width: 12%;
+        word-break: break-word;
+    }
+
+    .comments-table th:nth-child(3),
+    .comments-table td:nth-child(3) {
+        width: 53%;
+        word-break: break-word;
+    }
+
+    .comments-table th:nth-child(4),
+    .comments-table td:nth-child(4) {
+        width: 10%;
+        text-align: center;
+    }
+
+    .comments-table th:nth-child(5),
+    .comments-table td:nth-child(5) {
+        width: 10%;
+        text-align: center;
+    }
+
+    .comments-table th:nth-child(6),
+    .comments-table td:nth-child(6) {
+        width: 10%;
+        text-align: center;
+    }
+
+    .badge-bot {
+        background: #f59e0b20;
+        color: #f59e0b;
+        border: 1px solid #f59e0b40;
+    }
+
+    .badge-human {
+        background: #10b98120;
+        color: #10b981;
+        border: 1px solid #10b98140;
+    }
+    
+    .badge {
+        display: inline-block;
+        padding: 0.2rem 0.6rem;
+        border-radius: 20px;
+        font-size: 0.7rem;
+        font-weight: 600;
+    }
+    
+    .badge-normal { background: #10b98120; color: #10b981; border: 1px solid #10b98140; }
+    .badge-spam { background: #f59e0b20; color: #f59e0b; border: 1px solid #f59e0b40; }
+    .badge-toxic { background: #ef444420; color: #ef4444; border: 1px solid #ef444440; }
+    .badge-bot { background: #f59e0b20; color: #f59e0b; border: 1px solid #f59e0b40; }
+    .badge-human { background: #10b98120; color: #10b981; border: 1px solid #10b98140; }
+    
+    .progress-bar {
+        height: 6px;
+        background: #2d3748;
+        border-radius: 3px;
+        overflow: hidden;
+        margin-top: 0.5rem;
+    }
+    
+    .progress-fill {
+        height: 100%;
+        border-radius: 3px;
+        transition: width 0.3s;
+    }
+    
+    .fill-normal { background: #10b981; }
+    .fill-spam { background: #f59e0b; }
+    .fill-toxic { background: #ef4444; }
+    
+    .no-data {
+        text-align: center;
+        padding: 3rem;
+        color: var(--muted2);
+    }
+    
+    .action-btn {
+        background: linear-gradient(135deg, #f59e0b, #d97706);
+        border: none;
+        border-radius: var(--radius-sm);
+        color: white;
+        padding: 0.5rem 1rem;
+        font-size: 0.75rem;
+        cursor: pointer;
+        transition: all 0.2s;
+        margin-top: 0.5rem;
+    }
+    
+    .action-btn:hover {
+        transform: translateY(-2px);
+        opacity: 0.9;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="page-wrap">
+    <div class="page-header">
+        <div class="page-header-left">
+            <h1>Video Performance Report</h1>
+            <p>Comprehensive analysis with viral potential scoring and actionable improvement suggestions.</p>
+        </div>
+    </div>
+
+    <!-- Report Content -->
+    <div id="reportContainer" class="report-container">
+        <div id="loadingMessage" class="no-data">
+            <div class="nd-icon">📄</div>
+            <h3>No analysis data found</h3>
+            <p>Go to the home page, paste a YouTube URL, and click Analyze first.</p>
+            <a href="/" class="nd-btn">Go to Home Page →</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Load stored analysis data
+    const stored = sessionStorage.getItem('ytva_result');
+    let analysisData = null;
+
+    if (stored) {
+        analysisData = JSON.parse(stored);
+        document.getElementById('loadingMessage').style.display = 'none';
+        renderFullReport(analysisData);
+    }
+
+    async function downloadReport() {
+        if (!analysisData) {
+            alert('No analysis data found. Please analyze a video first.');
+            return;
+        }
+        
+        try {
+            const response = await fetch('/api/generate_report', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    analysis_data: analysisData,
+                    report_type: 'html'
+                })
+            });
+            
+            const result = await response.json();
+            
+            if (result.success && result.files && result.files.length > 0) {
+                window.open(`/api/download_report/${result.files[0].filename}`, '_blank');
+                alert('Report downloaded successfully!');
+            } else {
+                alert('Error: ' + (result.error || 'Failed to generate report'));
+            }
+        } catch (error) {
+            alert('Error generating report: ' + error.message);
+        }
+    }
+
+    async function renderFullReport(data) {
+        const container = document.getElementById('reportContainer');
+        if (!container) return;
+        
+        const s = data.summary;
+        const comments = data.comments || [];
+        const videoId = data.video_id;
+        const videoTitle = data.video_title || 'YouTube Video';
+        
+        // Calculate statistics
+        const toxicCount = comments.filter(c => c.label === 'toxic').length;
+        const spamCount = comments.filter(c => c.label === 'spam').length;
+        const normalCount = comments.filter(c => c.label === 'normal').length;
+        const botCount = comments.filter(c => c.is_bot === true).length;
+        const humanCount = comments.length - botCount;
+        
+        // Calculate Viral Potential Score (0-100)
+        let viralScore = 70; // Base score
+        
+        // Factor 1: Toxicity reduces score
+        const toxicPenalty = Math.min(30, toxicCount * 2);
+        viralScore -= toxicPenalty;
+        
+        // Factor 2: Spam reduces score
+        const spamPenalty = Math.min(20, spamCount * 1.5);
+        viralScore -= spamPenalty;
+        
+        // Factor 3: Bot activity reduces authenticity
+        const botPenalty = Math.min(15, botCount * 0.5);
+        viralScore -= botPenalty;
+        
+        // Factor 4: Normal comments increase score
+        const normalBonus = Math.min(25, normalCount / 2);
+        viralScore += normalBonus;
+        
+        // Factor 5: Human engagement bonus
+        const humanBonus = Math.min(15, humanCount / 3);
+        viralScore += humanBonus;
+        
+        viralScore = Math.max(0, Math.min(100, Math.round(viralScore)));
+        
+        // Determine viral level
+        let viralLevel, viralColor;
+        if (viralScore >= 70) {
+            viralLevel = "HIGH VIRAL POTENTIAL";
+            viralColor = "#10b981";
+        } else if (viralScore >= 50) {
+            viralLevel = "MEDIUM VIRAL POTENTIAL";
+            viralColor = "#f59e0b";
+        } else if (viralScore >= 30) {
+            viralLevel = "LOW VIRAL POTENTIAL";
+            viralColor = "#ef4444";
+        } else {
+            viralLevel = "VERY LOW VIRAL POTENTIAL";
+            viralColor = "#6b7280";
+        }
+        
+        const topToxic = comments.filter(c => c.label === 'toxic').slice(0, 10);
+        const topSpam = comments.filter(c => c.label === 'spam').slice(0, 10);
+        const topBot = comments.filter(c => c.is_bot === true).slice(0, 10);
+
+        // Generate suggestions based on data
+        const suggestions = [];
+        
+        // Check for toxicity issues
+        if (toxicCount > 5) {
+            suggestions.push({
+                title: "High Toxicity Detected",
+                description: `${toxicCount} toxic comments were found. Toxic comments can drive away genuine viewers and reduce engagement. Consider moderating these comments or improving community guidelines.`,
+                priority: "urgent",
+                action: "Enable comment moderation or reply respectfully to defuse tensions."
+            });
+        }
+        
+        // Check for spam issues
+        if (spamCount > 10) {
+            suggestions.push({
+                title: "Spam Comments are Hurting Engagement",
+                description: `${spamCount} spam comments detected. Excessive spam makes your comment section look unprofessional and may discourage real discussions.`,
+                priority: "high",
+                action: "Use YouTube's spam filters or add a moderation team to clean up spam."
+            });
+        }
+        
+        // Check for bot activity
+        if (botCount > 5) {
+            suggestions.push({
+                title: "Bot Activity Detected",
+                description: `${botCount} bot-like comments detected. Bots can artificially inflate engagement metrics and mislead your audience.`,
+                priority: "high",
+                action: "Consider using CAPTCHA or stricter comment verification for new accounts."
+            });
+        }
+        
+        // Engagement suggestions
+        if (normalCount > 0) {
+            const topThemes = extractTopThemes(comments);
+            if (topThemes.length > 0) {
+                suggestions.push({
+                    title: "What Your Audience Loves",
+                    description: `Your audience is most engaged with: ${topThemes.slice(0, 3).join(', ')}. Create more content around these topics!`,
+                    priority: "medium",
+                    action: "Plan your next video around the most discussed themes in comments."
+                });
+            }
+        }
+        
+        // Check like-to-comment ratio
+        const avgLikes = comments.reduce((sum, c) => sum + (c.likes || 0), 0) / comments.length;
+        if (avgLikes > 50) {
+            suggestions.push({
+                title: "Strong Like-to-Comment Ratio",
+                description: `Your audience is actively liking comments (average ${Math.round(avgLikes)} likes). This indicates high engagement!`,
+                priority: "low",
+                action: "Pin a top comment to encourage more interaction and community bonding."
+            });
+        }
+        
+        // General improvement suggestions based on data
+        if (comments.length > 0) {
+            suggestions.push({
+                title: "Consistency is Key",
+                description: "Videos with consistent upload schedules tend to perform better. Your comment analysis can help identify what your audience wants.",
+                priority: "medium",
+                action: "Analyze which topics get the most positive engagement and create more content in that niche."
+            });
+        }
+        
+        // Add a suggestion for community building
+        suggestions.push({
+            title: "Build a Community, Not Just Views",
+            description: "Respond to top comments, ask follow-up questions, and create a sense of belonging. Communities drive long-term growth.",
+            priority: "low",
+            action: "Reply to at least 5 comments in your next video within the first hour of posting."
+        });
+        
+        // Add viral tips based on industry best practices
+        suggestions.push({
+            title: "Optimize Your Video Title & Thumbnail",
+            description: "Titles and thumbnails are the #1 factor for click-through rate. Use curiosity gaps and emotional triggers.",
+            priority: "high",
+            action: "Test 2-3 different thumbnails and titles for your next video using YouTube's A/B testing."
+        });
+        
+        container.innerHTML = `
+            <div class="report-header">
+                <span class="report-title">Video Performance Report</span>
+                <div class="btn-group">
+                    <button onclick="scrollToSection('suggestions')" class="report-btn">View Suggestions</button>
+                    <button onclick="scrollToSection('comments-table')" class="report-btn">View Comments</button>
+                    <button onclick="downloadReport()" class="report-btn download">Download Report (HTML)</button>
+                </div>
+            </div>
+            
+            <!-- Video Info -->
+            <div style="background: rgba(99,102,241,0.08); padding: 1rem; border-radius: 12px; margin-bottom: 1.5rem;">
+                <div><strong>Video Title:</strong> ${escapeHtml(videoTitle)}</div>
+                <div><strong>Video ID:</strong> ${videoId}</div>
+                <div><strong>Analysis Date:</strong> ${new Date().toLocaleString()}</div>
+                <div><strong>Total Comments:</strong> ${s.total_comments}</div>
+            </div>
+            
+            <!-- Viral Potential Score -->
+            <div class="viral-score-container">
+                <h3 style="margin-bottom: 1rem;">Viral Potential Score</h3>
+                <div class="viral-score-circle">
+                    <svg width="120" height="120" viewBox="0 0 120 120">
+                        <circle cx="60" cy="60" r="54" fill="none" stroke="#2d3748" stroke-width="8"/>
+                        <circle cx="60" cy="60" r="54" fill="none" stroke="${viralColor}" stroke-width="8"
+                                stroke-dasharray="${viralScore * 3.39} 339" stroke-dashoffset="0"
+                                transform="rotate(-90 60 60)"/>
+                        <text x="60" y="70" text-anchor="middle" fill="${viralColor}" font-size="28" font-weight="bold">${viralScore}%</text>
+                        <text x="60" y="85" text-anchor="middle" fill="#94a3b8" font-size="10">Viral Score</text>
+                    </svg>
+                </div>
+                <div class="viral-score-text" style="color: ${viralColor}">${viralLevel}</div>
+                <div class="viral-label">Based on toxicity, spam, bot detection, and audience engagement metrics</div>
+            </div>
+
+            <!-- Toxic Comments Section -->
+            <div class="section-title">Top Toxic Comments</div>
+            ${topToxic.length > 0 ? `
+            <div style="overflow-x: auto;">
+                <table class="comments-table">
+                    <thead>
+                        <tr><th>#</th><th>Author</th><th>Comment</th><th>Confidence</th></tr>
+                    </thead>
+                    <tbody>
+                        ${topToxic.map((c, i) => `
+                            <tr>
+                                <td>${i+1}</td>
+                                <td>${escapeHtml(c.author)}</td>
+                                <td style="word-break: break-word;">"${escapeHtml(c.text.substring(0, 80))}..."</td>
+                                <td><span class="badge badge-toxic">${c.confidence}%</span></td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            </div>
+            ` : '<p>No toxic comments detected in this dataset.</p>'}
+
+            <!-- Spam Comments Section -->
+            <div class="section-title">Top Spam Comments</div>
+            ${topSpam.length > 0 ? `
+            <div style="overflow-x: auto;">
+                <table class="comments-table">
+                    <thead>
+                        <tr><th>#</th><th>Author</th><th>Comment</th><th>Confidence</th></tr>
+                    </thead>
+                    <tbody>
+                        ${topSpam.map((c, i) => `
+                            <tr>
+                                <td>${i+1}</td>
+                                <td>${escapeHtml(c.author)}</td>
+                                <td style="word-break: break-word;">"${escapeHtml(c.text.substring(0, 80))}..."</td>
+                                <td><span class="badge badge-spam">${c.confidence}%</span></td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            </div>
+            ` : '<p>No spam comments detected in this dataset.</p>'}
+
+            <!-- Suspicious Bot Comments Section -->
+            <div class="section-title">Suspicious Bot Comments</div>
+            ${topBot.length > 0 ? `
+            <div style="overflow-x: auto;">
+                <table class="comments-table">
+                    <thead>
+                        <tr><th>#</th><th>Author</th><th>Comment</th><th>Bot Probability</th></tr>
+                    </thead>
+                    <tbody>
+                        ${topBot.map((c, i) => `
+                            <tr>
+                                <td>${i+1}</td>
+                                <td>${escapeHtml(c.author)}</td>
+                                <td style="word-break: break-word;">"${escapeHtml(c.text.substring(0, 80))}..."</td>
+                                <td><span class="badge badge-bot">${c.bot_probability}%</span></td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            </div>
+            ` : '<p>No bot activity detected in this dataset.</p>'}
+            
+            <!-- Overall Statistics -->
+            <div class="report-stats-grid">
+                <div class="report-stat-card">
+                    <div class="report-stat-value" style="color: #10b981;">${s.normal_pct}%</div>
+                    <div class="report-stat-label">Normal Comments (${s.normal_count})</div>
+                    <div class="progress-bar"><div class="progress-fill fill-normal" style="width: ${s.normal_pct}%"></div></div>
+                </div>
+                <div class="report-stat-card">
+                    <div class="report-stat-value" style="color: #f59e0b;">${s.spam_pct}%</div>
+                    <div class="report-stat-label">Spam Comments (${s.spam_count})</div>
+                    <div class="progress-bar"><div class="progress-fill fill-spam" style="width: ${s.spam_pct}%"></div></div>
+                </div>
+                <div class="report-stat-card">
+                    <div class="report-stat-value" style="color: #ef4444;">${s.toxic_pct}%</div>
+                    <div class="report-stat-label">Toxic Comments (${s.toxic_count})</div>
+                    <div class="progress-bar"><div class="progress-fill fill-toxic" style="width: ${s.toxic_pct}%"></div></div>
+                </div>
+                <div class="report-stat-card">
+                    <div class="report-stat-value" style="color: #f59e0b;">${s.bot_pct}%</div>
+                    <div class="report-stat-label">Bot Comments (${s.bot_count})</div>
+                    <div class="progress-bar"><div class="progress-fill fill-spam" style="width: ${s.bot_pct}%"></div></div>
+                </div>
+            </div>
+            
+            <!-- Improvement Suggestions Section -->
+            <div id="suggestions">
+                <div class="section-title">Viral Growth Suggestions & Improvements</div>
+                <div class="suggestion-grid">
+                    ${suggestions.map(sug => `
+                        <div class="suggestion-card ${sug.priority}">
+                            <div class="suggestion-title">${sug.title}</div>
+                            <div class="suggestion-desc">${sug.description}</div>
+                            <div style="margin-top: 0.5rem;">
+                                <span class="priority-badge priority-${sug.priority}">${sug.priority.toUpperCase()} PRIORITY</span>
+                            </div>
+                            <button class="action-btn" onclick="alert('Action: ${sug.action.replace(/'/g, "\\'")}')">
+                                Take Action
+                            </button>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+            
+            <!-- Quick Wins Checklist -->
+            <div class="section-title">Quick Wins Checklist</div>
+            <div style="background: rgba(255,255,255,0.03); border-radius: var(--radius-sm); padding: 1rem; margin-bottom: 1.5rem;">
+                <div class="improvement-item">
+                    <span class="improvement-${spamCount < 5 ? 'check' : 'cross'}">${spamCount < 5 ? '✅' : '❌'}</span>
+                    Clean up spam comments (${spamCount} detected)
+                </div>
+                <div class="improvement-item">
+                    <span class="improvement-${toxicCount < 3 ? 'check' : 'cross'}">${toxicCount < 3 ? '✅' : '❌'}</span>
+                    Address toxic comments (${toxicCount} detected)
+                </div>
+                <div class="improvement-item">
+                    <span class="improvement-${s.normal_pct > 70 ? 'check' : 'cross'}">${s.normal_pct > 70 ? '✅' : '❌'}</span>
+                    Positive engagement rate: ${s.normal_pct}% ${s.normal_pct > 70 ? '(Good!)' : '(Needs improvement)'}
+                </div>
+                <div class="improvement-item">
+                    <span class="improvement-${botCount === 0 ? 'check' : 'cross'}">${botCount === 0 ? '✅' : '❌'}</span>
+                    Bot activity: ${botCount} bot-like comments detected
+                </div>
+                <div class="improvement-item">
+                    <span>📊</span>
+                    Next video suggestion: Create content based on the most discussed themes from your audience
+                </div>
+            </div>
+            
+            <!-- Top Comments Table -->
+            <div id="comments-table" class="section-title">Top Comments Analysis</div>
+            <div style="overflow-x: auto;">
+                <table class="comments-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Author</th>
+                            <th>Comment</th>
+                            <th>Category</th>
+                            <th>Confidence</th>
+                            <th>Bot</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${comments.slice(0, 30).map((c, i) => {
+                            let commentText = c.text || '';
+                            let shortText = commentText.length > 70 ? commentText.substring(0, 70) + '...' : commentText;
+                            return `
+                            <tr>
+                                <td>${i+1}</td>
+                                <td>${escapeHtml(c.author)}</td>
+                                <td>"${escapeHtml(shortText)}"</td>
+                                <td><span class="badge badge-${c.label || 'normal'}">${(c.label || 'normal').toUpperCase()}</span></td>
+                                <td>${c.confidence}%</td>
+                                <td>${c.is_bot ? '<span class="badge badge-bot">BOT</span>' : '<span class="badge badge-human">HUMAN</span>'}</td>
+                            </tr>
+                            `;
+                        }).join('')}
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Report Footer -->
+            <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--border); text-align: center; font-size: 0.7rem; color: var(--muted2);">
+                <p>Report generated by YouTube Video Analyzer (YT-VA)</p>
+                <p>Use these insights to optimize your content strategy and increase viral potential</p>
+                <p>Department of Software Engineering, UAJK | Final Year Project 2025-26</p>
+            </div>
+        `;
+    }
+    
+    function extractTopThemes(comments) {
+        const themes = [];
+        const keywords = ['tutorial', 'review', 'funny', 'music', 'gaming', 'tech', 'education', 'entertainment', 'news', 'sports'];
+        
+        for (const comment of comments) {
+            const text = (comment.text || '').toLowerCase();
+            for (const keyword of keywords) {
+                if (text.includes(keyword) && !themes.includes(keyword)) {
+                    themes.push(keyword);
+                }
+            }
+        }
+        return themes.slice(0, 5);
+    }
+    
+    function scrollToSection(sectionId) {
+        const element = document.getElementById(sectionId);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }
+    
+    function escapeHtml(t) {
+        if (!t) return '';
+        return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+</script>
+{% endblock %}

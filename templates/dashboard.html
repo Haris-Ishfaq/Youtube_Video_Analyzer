@@ -1,0 +1,345 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% set active_page = 'dashboard' %}
+
+{% block extra_head %}
+<script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+{% endblock %}
+
+{% block content %}
+<div class="page-wrap">
+  <div class="page-header" style="margin-bottom:1.5rem">
+    <div class="page-header-left">
+      <h1>Visualization Dashboard</h1>
+      <p>Complete analytics overview: comment quality metrics, toxicity ratios, bot detection, topic insights, intent distribution, and trend alignment.</p>
+    </div>
+  </div>
+
+  <div id="noData" class="no-data-state">
+    <div class="nd-icon">📊</div>
+    <h3>No analysis data found</h3>
+    <p>Go to the home page, paste a YouTube URL, and click Analyze first.</p>
+    <a href="/" class="nd-btn">Go to Home Page →</a>
+  </div>
+
+  <div id="dashContent" style="display:none">
+    <!-- Row 1: Core Stats -->
+    <div class="stats-row" id="dashStats"></div>
+
+    <!-- Row 2: Toxic/Spam Charts -->
+    <div class="two-col" style="margin-top:1.5rem">
+      <div class="card chart-card">
+        <div class="card-title">Comment Classification Distribution</div>
+        <div id="dashPie" style="height:280px"></div>
+      </div>
+      <div class="card chart-card">
+        <div class="card-title">Category Breakdown</div>
+        <div id="dashBar" style="height:280px"></div>
+      </div>
+    </div>
+
+    <!-- Row 3: Bot & Confidence Charts -->
+    <div class="two-col" style="margin-top:1.5rem">
+      <div class="card chart-card">
+        <div class="card-title">Classifier Confidence Distribution</div>
+        <div id="dashHist" style="height:260px"></div>
+      </div>
+      <div class="card chart-card">
+        <div class="card-title">Human vs Bot Ratio</div>
+        <div id="botPie" style="height:260px"></div>
+      </div>
+    </div>
+
+    <!-- Row 4: NEW - Topics, Intents, Trends Charts -->
+    <div class="two-col" style="margin-top:1.5rem">
+      <div class="card chart-card">
+        <div class="card-title">Topic Distribution</div>
+        <div id="topicBarChart" style="height:280px"></div>
+        <div style="margin-top: 0.75rem; font-size: 0.75rem; color: var(--muted2); text-align: center;">
+          Topics discovered using BERTopic + SBERT embeddings
+        </div>
+      </div>
+      <div class="card chart-card">
+        <div class="card-title">Intent Distribution</div>
+        <div id="intentPieChart" style="height:280px"></div>
+        <div style="margin-top: 0.75rem; font-size: 0.75rem; color: var(--muted2); text-align: center;">
+          Zero-shot classification (Question, Feedback, Hate, Promotion, etc.)
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 5: Trend Alignment -->
+    <div class="card chart-card" style="margin-top:1.5rem">
+      <div class="card-title">Topic vs Trend Alignment</div>
+      <div id="trendAlignmentChart" style="height:300px"></div>
+      <div style="margin-top: 0.75rem; font-size: 0.75rem; color: var(--muted2); text-align: center;">
+        How your comment topics align with current global trends across 11+ categories
+      </div>
+    </div>
+
+    <!-- Row 6: Module Status -->
+    <div class="card" style="margin-top:1.5rem;padding:1.5rem">
+      <div class="card-title">System Modules — Status</div>
+      <div class="module-status-grid" id="moduleGrid"></div>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div style="margin-top:1.25rem; display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center;">
+      <a href="/spam" class="nd-btn" style="font-size:.8rem;padding:.5rem 1rem; background: linear-gradient(135deg, #ef4444, #dc2626);">🛡️ Spam & Toxic</a>
+      <a href="/bots" class="nd-btn" style="font-size:.8rem;padding:.5rem 1rem; background: linear-gradient(135deg, #f59e0b, #d97706);">🤖 Bot Detection</a>
+      <a href="/topics" class="nd-btn" style="font-size:.8rem;padding:.5rem 1rem; background: linear-gradient(135deg, #6366f1, #4f46e5);">🔍 Topic Clustering</a>
+      <a href="/intents" class="nd-btn" style="font-size:.8rem;padding:.5rem 1rem; background: linear-gradient(135deg, #06b6d4, #0891b2);">💬 Intent Prediction</a>
+      <a href="/trends" class="nd-btn" style="font-size:.8rem;padding:.5rem 1rem; background: linear-gradient(135deg, #ec4899, #db2777);">📈 Trend Matching</a>
+      <div style="display: flex; gap: 0.5rem;">
+          <a href="/report" class="nd-btn" style="font-size:.8rem;padding:.5rem 1rem; background: linear-gradient(135deg, #6366f1, #4f46e5); text-decoration: none;">
+              📊 View Report
+          </a>
+          <button onclick="generateReport()" class="nd-btn" style="font-size:.8rem;padding:.5rem 1rem; background: linear-gradient(135deg, #10b981, #059669);">
+              📥 Download Report
+          </button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  const stored = sessionStorage.getItem('ytva_result');
+  if (stored) {
+    const data = JSON.parse(stored);
+    document.getElementById('noData').style.display = 'none';
+    document.getElementById('dashContent').style.display = 'block';
+    renderDashboard(data);
+    loadAdvancedCharts(data.comments);
+  }
+
+  function renderDashboard(data) {
+    const s = data.summary;
+    const comments = data.comments;
+
+    document.getElementById('dashStats').innerHTML = `
+      <div class="stat-card"><div class="sc-val">${s.total_comments}</div><div class="sc-key">Total Comments</div><div class="sc-sub">Fetched via YouTube API</div></div>
+      <div class="stat-card" style="--accent:#10b981"><div class="sc-val" style="color:#10b981">${s.normal_pct}%</div><div class="sc-key">Normal Rate</div><div class="sc-sub" style="color:#10b981">${s.normal_count} comments</div></div>
+      <div class="stat-card" style="--accent:#f59e0b"><div class="sc-val" style="color:#f59e0b">${s.spam_pct}%</div><div class="sc-key">Spam Rate</div><div class="sc-sub" style="color:#f59e0b">${s.spam_count} detected</div></div>
+      <div class="stat-card" style="--accent:#ef4444"><div class="sc-val" style="color:#ef4444">${s.toxic_pct}%</div><div class="sc-key">Toxic Rate</div><div class="sc-sub" style="color:#ef4444">${s.toxic_count} detected</div></div>
+    `;
+
+    // Existing charts
+    Plotly.newPlot('dashPie', [{
+      values: [s.normal_count, s.spam_count, s.toxic_count],
+      labels: ['Normal', 'Spam', 'Toxic'], type: 'pie', hole: 0.55,
+      marker: { colors: ['#10b981', '#f59e0b', '#ef4444'] },
+      textinfo: 'label+percent', textfont: { color: '#e2e8f0', family: 'DM Sans', size: 12 },
+    }], plotLayout(), { responsive: true, displayModeBar: false });
+
+    Plotly.newPlot('dashBar', [{
+      x: ['Normal', 'Spam', 'Toxic'],
+      y: [s.normal_count, s.spam_count, s.toxic_count],
+      type: 'bar',
+      marker: { color: ['#10b981', '#f59e0b', '#ef4444'], opacity: 0.85 },
+      text: [`${s.normal_pct}%`, `${s.spam_pct}%`, `${s.toxic_pct}%`],
+      textposition: 'outside', textfont: { color: '#e2e8f0' },
+    }], { ...plotLayout(), xaxis: { gridcolor: 'rgba(255,255,255,0.04)', tickfont: { color: '#94a3b8' } },
+      yaxis: { gridcolor: 'rgba(255,255,255,0.04)', tickfont: { color: '#94a3b8' } },
+      margin: { l:40, r:20, t:30, b:50 }
+    }, { responsive: true, displayModeBar: false });
+
+    Plotly.newPlot('dashHist', [{
+      x: comments.map(c => c.confidence), type: 'histogram', nbinsx: 20,
+      marker: { color: '#6366f1', opacity: 0.8 }, name: 'Confidence %',
+    }], { ...plotLayout(),
+      xaxis: { title: 'Confidence Score (%)', gridcolor: 'rgba(255,255,255,0.04)', tickfont: { color: '#94a3b8' } },
+      yaxis: { title: 'Count', gridcolor: 'rgba(255,255,255,0.04)', tickfont: { color: '#94a3b8' } },
+      margin: { l:50, r:20, t:20, b:60 }, showlegend: false,
+    }, { responsive: true, displayModeBar: false });
+
+    const botCount = s.bot_count || 0;
+    const humanCount = s.human_count || (s.total_comments - botCount);
+    Plotly.newPlot('botPie', [{
+      values: [humanCount, botCount], labels: ['Human', 'Bot'],
+      type: 'pie', hole: 0.55,
+      marker: { colors: ['#10b981', '#f59e0b'] },
+      textinfo: 'label+percent', textfont: { color: '#e2e8f0', family: 'DM Sans', size: 12 },
+    }], plotLayout(), { responsive: true, displayModeBar: false });
+
+    // Module status
+    const modules = [
+      { n: 'Visualization Dashboard', status: 'active', icon: '📊' },
+      { n: 'Toxic & Spam Detection', status: 'active', icon: '🛡️' },
+      { n: 'Bot Ratio Detection', status: 'active', icon: '🤖' },
+      { n: 'Topic Clustering', status: 'active', icon: '🔍' },
+      { n: 'Intent Prediction', status: 'active', icon: '💬' },
+      { n: 'Trend Topic Matching', status: 'active', icon: '📈' },
+    ];
+    document.getElementById('moduleGrid').innerHTML = modules.map(m => `
+      <div class="ms-item">
+        <span class="ms-icon">${m.icon}</span>
+        <span class="ms-name">${m.n}</span>
+        <span class="ms-status ms-${m.status}">${m.status === 'active' ? '● Active' : '○ Planned'}</span>
+      </div>
+    `).join('');
+  }
+
+  async function loadAdvancedCharts(comments) {
+    // Load Topics
+    try {
+      const topicResp = await fetch('/api/topic_clustering', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ comments: comments })
+      });
+      const topicData = await topicResp.json();
+      
+      if (topicData.success && topicData.topics) {
+        const topicNames = topicData.topics.map(t => t.name.length > 20 ? t.name.substring(0,20)+'...' : t.name);
+        const topicSizes = topicData.topics.map(t => t.size);
+        
+        Plotly.newPlot('topicBarChart', [{
+          x: topicNames,
+          y: topicSizes,
+          type: 'bar',
+          marker: { color: '#818cf8', opacity: 0.8 },
+          text: topicSizes,
+          textposition: 'outside'
+        }], {
+          paper_bgcolor: 'transparent',
+          plot_bgcolor: 'transparent',
+          font: { color: '#94a3b8' },
+          xaxis: { tickangle: -30, gridcolor: 'rgba(255,255,255,0.04)' },
+          yaxis: { title: 'Number of Comments', gridcolor: 'rgba(255,255,255,0.04)' },
+          margin: { l:50, r:20, t:30, b:80 }
+        }, { responsive: true, displayModeBar: false });
+        
+        // Load Trends using topics
+        const trendResp = await fetch('/api/match_trends', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ topics: topicData.topics })
+        });
+        const trendData = await trendResp.json();
+        
+        if (trendData.success && trendData.matches) {
+          const trendMatches = trendData.matches;
+          const topicNamesTrend = trendMatches.map(m => m.topic_name.length > 20 ? m.topic_name.substring(0,20)+'...' : m.topic_name);
+          const matchScores = trendMatches.map(m => m.match_score);
+          const colors = matchScores.map(s => s >= 70 ? '#10b981' : s >= 50 ? '#f59e0b' : '#818cf8');
+          
+          Plotly.newPlot('trendAlignmentChart', [{
+            x: topicNamesTrend,
+            y: matchScores,
+            type: 'bar',
+            marker: { color: colors, opacity: 0.8 },
+            text: matchScores.map(s => s + '%'),
+            textposition: 'outside'
+          }], {
+            paper_bgcolor: 'transparent',
+            plot_bgcolor: 'transparent',
+            font: { color: '#94a3b8' },
+            xaxis: { tickangle: -30, gridcolor: 'rgba(255,255,255,0.04)' },
+            yaxis: { title: 'Trend Match Score (%)', range: [0, 100], gridcolor: 'rgba(255,255,255,0.04)' },
+            margin: { l:50, r:20, t:30, b:80 }
+          }, { responsive: true, displayModeBar: false });
+        }
+      }
+    } catch (err) {
+      console.error('Topic chart error:', err);
+      document.getElementById('topicBarChart').innerHTML = '<div style="text-align:center; padding:2rem">⚠️ Topic analysis unavailable</div>';
+    }
+    
+    // Load Intents
+    try {
+      const intentResp = await fetch('/api/intent_prediction', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ comments: comments })
+      });
+      const intentData = await intentResp.json();
+      
+      if (intentData.success && intentData.summary && intentData.summary.distribution) {
+        const dist = intentData.summary.distribution;
+        const labels = Object.keys(dist);
+        const values = Object.values(dist);
+        const colorMap = {
+          question: '#818cf8', feedback: '#10b981', appreciation: '#10b981',
+          hate: '#ef4444', spam: '#ef4444', promotion: '#f59e0b',
+          criticism: '#f59e0b', neutral: '#94a3b8', suggestion: '#818cf8',
+          support: '#10b981', disagreement: '#f59e0b'
+        };
+        const colors = labels.map(l => colorMap[l] || '#6366f1');
+        
+        Plotly.newPlot('intentPieChart', [{
+          values: values,
+          labels: labels,
+          type: 'pie',
+          hole: 0.5,
+          marker: { colors: colors },
+          textinfo: 'label+percent',
+          textfont: { color: '#e2e8f0', size: 11 }
+        }], {
+          paper_bgcolor: 'transparent',
+          plot_bgcolor: 'transparent',
+          font: { color: '#94a3b8' },
+          showlegend: false,
+          margin: { l:20, r:20, t:20, b:20 }
+        }, { responsive: true, displayModeBar: false });
+      }
+    } catch (err) {
+      console.error('Intent chart error:', err);
+      document.getElementById('intentPieChart').innerHTML = '<div style="text-align:center; padding:2rem">⚠️ Intent analysis unavailable</div>';
+    }
+  }
+
+  function plotLayout() {
+    return {
+      paper_bgcolor: 'transparent', plot_bgcolor: 'transparent',
+      font: { color: '#94a3b8', family: 'DM Sans' },
+      showlegend: false, margin: { l:20, r:20, t:20, b:20 }
+    };
+  }
+
+  async function generateReport() {
+    const stored = sessionStorage.getItem('ytva_result');
+    if (!stored) {
+        alert('Please analyze a video first');
+        return;
+    }
+    
+    const data = JSON.parse(stored);
+    
+    // Show loading
+    const btn = event.target;
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '⏳ Generating...';
+    btn.disabled = true;
+    
+    try {
+        const response = await fetch('/api/generate_report', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                analysis_data: data,
+                report_type: 'html'
+            })
+        });
+        
+        const result = await response.json();
+        
+        if (result.success) {
+            // Download the report
+            window.open(`/api/download_report/${result.files[0].filename}`, '_blank');
+            
+            // Show success message
+            alert(`✅ Report generated successfully!\n\nDownloading: ${result.files[0].filename}`);
+        } else {
+            alert('Error: ' + result.error);
+        }
+    } catch (error) {
+        alert('Error generating report: ' + error.message);
+    } finally {
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+    }
+  }
+</script>
+{% endblock %}

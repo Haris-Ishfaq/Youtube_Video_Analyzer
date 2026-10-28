@@ -1,0 +1,197 @@
+{% extends "base.html" %}
+{% block title %}Topic Analysis{% endblock %}
+{% set active_page = 'topics' %}
+
+{% block extra_head %}
+<script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+<style>
+  .topic-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+  }
+  .topic-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+  .topic-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .topic-name {
+    font-family: var(--font-head);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--accent2);
+  }
+  .topic-size {
+    background: rgba(99,102,241,0.15);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: var(--accent2);
+  }
+  .topic-keywords {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  .keyword-tag {
+    background: rgba(255,255,255,0.08);
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    color: var(--muted2);
+  }
+  .sample-comments {
+    background: rgba(255,255,255,0.03);
+    padding: 0.75rem;
+    border-radius: var(--radius-sm);
+    margin-top: 0.75rem;
+  }
+  .sample-comment {
+    font-size: 0.85rem;
+    color: var(--text);
+    padding: 0.5rem;
+    border-left: 2px solid var(--accent);
+    margin-bottom: 0.5rem;
+  }
+  .loading-spinner {
+    text-align: center;
+    padding: 3rem;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="page-wrap">
+  <div class="page-header">
+    <div class="page-header-left">
+      <h1>Topic Clustering Analysis</h1>
+      <p>Automatically groups comments into meaningful topics using BERTopic (advanced transformer-based clustering). Understand what your audience is talking about.</p>
+    </div>
+  </div>
+
+  <div id="noData" class="no-data-state">
+    <div class="nd-icon">🔍</div>
+    <h3>No analysis data found</h3>
+    <p>Go to the home page, paste a YouTube URL, and click Analyze first.</p>
+    <a href="/" class="nd-btn">Go to Home Page →</a>
+  </div>
+
+  <div id="topicsContent" style="display:none">
+    <div class="stats-row" id="topicStats" style="margin-bottom:1.25rem"></div>
+    
+    <div class="card" style="margin-bottom:1.25rem; padding:1.5rem">
+      <div class="card-title">Topic Distribution</div>
+      <div id="topicBarChart" style="height: 300px;"></div>
+    </div>
+
+    <div id="topicsList"></div>
+
+    <div class="info-banner">
+      <span class="ib-icon">🧠</span>
+      <div>
+        <strong>How it works:</strong> Topics are discovered using BERTopic, which uses SBERT embeddings and HDBSCAN clustering to automatically find discussion themes. No training required - it works on any set of comments!
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  const stored = sessionStorage.getItem('ytva_result');
+  if (stored) {
+    const data = JSON.parse(stored);
+    document.getElementById('noData').style.display = 'none';
+    document.getElementById('topicsContent').style.display = 'block';
+    analyzeTopics(data.comments);
+  }
+
+  async function analyzeTopics(comments) {
+    document.getElementById('topicsList').innerHTML = '<div class="loading-spinner">🔍 Analyzing topics with BERTopic... This may take a moment.</div>';
+    
+    try {
+      const response = await fetch('/api/topic_clustering', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ comments: comments })
+      });
+      
+      const result = await response.json();
+      
+      if (result.success) {
+        sessionStorage.setItem('ytva_topics', JSON.stringify(result));
+        renderTopics(result);
+      } else {
+        document.getElementById('topicsList').innerHTML = `<div class="no-data-state">❌ ${result.error || 'Topic clustering failed'}</div>`;
+      }
+    } catch (error) {
+      console.error('Topic analysis error:', error);
+      document.getElementById('topicsList').innerHTML = '<div class="no-data-state">❌ Error connecting to server</div>';
+    }
+  }
+
+  function renderTopics(result) {
+    // Stats
+    document.getElementById('topicStats').innerHTML = `
+      <div class="stat-card"><div class="sc-val">${result.total_comments}</div><div class="sc-key">Total Comments</div><div class="sc-sub">Analyzed</div></div>
+      <div class="stat-card"><div class="sc-val">${result.num_topics}</div><div class="sc-key">Topics Found</div><div class="sc-sub">Clustered automatically</div></div>
+      <div class="stat-card"><div class="sc-val">${result.method}</div><div class="sc-key">Method</div><div class="sc-sub">Advanced clustering</div></div>
+    `;
+
+    // Bar chart
+    const topicNames = result.topics.map(t => t.name.length > 20 ? t.name.substring(0,20)+'...' : t.name);
+    const topicSizes = result.topics.map(t => t.size);
+    
+    Plotly.newPlot('topicBarChart', [{
+      x: topicNames,
+      y: topicSizes,
+      type: 'bar',
+      marker: { color: '#6366f1', opacity: 0.8 },
+      text: topicSizes,
+      textposition: 'outside',
+      textfont: { color: '#e2e8f0' }
+    }], {
+      paper_bgcolor: 'transparent',
+      plot_bgcolor: 'transparent',
+      font: { color: '#94a3b8', family: 'DM Sans' },
+      xaxis: { tickangle: -45, gridcolor: 'rgba(255,255,255,0.04)' },
+      yaxis: { title: 'Number of Comments', gridcolor: 'rgba(255,255,255,0.04)' },
+      margin: { l:50, r:20, t:30, b:100 }
+    }, { responsive: true, displayModeBar: false });
+
+    // Topics list
+    const topicsHtml = result.topics.map(topic => `
+      <div class="topic-card">
+        <div class="topic-header">
+          <span class="topic-name">${escapeHtml(topic.name)}</span>
+          <span class="topic-size">${topic.size} comments</span>
+        </div>
+        <div class="topic-keywords">
+          ${topic.keywords.map(kw => `<span class="keyword-tag">#${escapeHtml(kw)}</span>`).join('')}
+        </div>
+        <div class="sample-comments">
+          <strong>Sample comments:</strong>
+          ${topic.sample_comments.map(c => `<div class="sample-comment">"${escapeHtml(c.substring(0, 100))}${c.length > 100 ? '…' : ''}"</div>`).join('')}
+        </div>
+      </div>
+    `).join('');
+    
+    document.getElementById('topicsList').innerHTML = topicsHtml;
+  }
+
+  function escapeHtml(t) {
+    return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+</script>
+{% endblock %}

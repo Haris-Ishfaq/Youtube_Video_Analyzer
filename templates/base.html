@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{% block title %}YT-VA{% endblock %} — YouTube Video Analyzer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css">
+  {% block extra_head %}{% endblock %}
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <span class="logo-icon">▶</span>
+        <span>YT-VA</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/"          {% if active_page == 'home'      %}class="active"{% endif %}>Home</a></li>
+        <li><a href="/dashboard" {% if active_page == 'dashboard' %}class="active"{% endif %}>Dashboard</a></li>
+        <li><a href="/spam"      {% if active_page == 'spam'      %}class="active"{% endif %}>Spam &amp; Toxic</a></li>
+        <li><a href="/bots"      {% if active_page == 'bots'      %}class="active"{% endif %}>Bot Detection</a></li>
+        <li><a href="/topics"    {% if active_page == 'topics'    %}class="active"{% endif %}>Topics</a></li>
+        <li><a href="/intents"   {% if active_page == 'intents'   %}class="active"{% endif %}>Intents</a></li>
+        <li><a href="/trends"    {% if active_page == 'trends'    %}class="active"{% endif %}>Trends</a></li>
+        <li><a href="/report"    {% if active_page == 'report'    %}class="active"{% endif %}>Report</a></li>
+        <li><a href="/about"     {% if active_page == 'about'     %}class="active"{% endif %}>About</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  {% block content %}{% endblock %}
+
+  {% block scripts %}{% endblock %}
+
+</body>
+</html>

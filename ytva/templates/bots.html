@@ -1,0 +1,288 @@
+{% extends "base.html" %}
+{% block title %}Bot Detection{% endblock %}
+{% set active_page = 'bots' %}
+
+{% block extra_head %}
+<script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+{% endblock %}
+
+{% block content %}
+<div class="page-wrap">
+  <div class="page-header">
+    <div class="page-header-left">
+      <h1>Bot Ratio Detection</h1>
+      <p>Analyzes commenting patterns, author behavior, and text similarity using a trained <strong>Keras Bot Detection Model</strong> to estimate the ratio of bot-generated comments vs genuine user interactions.</p>
+    </div>
+    <div class="page-header-right">
+      <!-- Live Bot Tester Box -->
+      <div class="live-test-box">
+        <label class="lt-label">🤖 Test a comment for bot activity</label>
+        <textarea id="botTextInput" class="lt-textarea" placeholder="Enter any comment to check if it's from a bot..."></textarea>
+        
+        <!-- Sample buttons for quick testing -->
+        <div class="sample-buttons">
+          <button class="sample-btn" onclick="setSampleText('follow me for free followers')">Free Followers</button>
+          <button class="sample-btn" onclick="setSampleText('subscribe to me i sub back')">Sub4Sub</button>
+          <button class="sample-btn" onclick="setSampleText('great video thanks for sharing')">Human</button>
+          <button class="sample-btn" onclick="setSampleText('check out my channel')">Promo</button>
+        </div>
+        
+        <button class="lt-btn" id="testBotBtn">Check for Bot</button>
+        <div class="lt-result" id="botLiveResult" style="display:none"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="noData" class="no-data-state">
+    <div class="nd-icon">🤖</div>
+    <h3>No analysis data found</h3>
+    <p>Go to the home page, paste a YouTube URL, and click Analyze first.</p>
+    <a href="/" class="nd-btn">Go to Home Page →</a>
+  </div>
+
+  <div id="botsContent" style="display:none">
+    <div class="stats-row" id="botStats" style="margin-bottom:1.25rem"></div>
+
+    <div class="two-col" style="margin-bottom:1.25rem">
+      <div class="card chart-card">
+        <div class="card-title">Human vs Suspected Bot Distribution</div>
+        <div id="botPieChart" style="height:280px"></div>
+      </div>
+      <div class="card legend-card">
+        <div class="card-title">Bot Detection Criteria</div>
+        <div class="criteria-list">
+          <div class="criteria-item">
+            <span class="crit-dot" style="background:#10b981"></span>
+            <div><strong>Human</strong><p>Genuine unique comments with natural language variation and normal engagement patterns.</p></div>
+          </div>
+          <div class="criteria-item">
+            <span class="crit-dot" style="background:#f59e0b"></span>
+            <div><strong>Suspected Bot</strong><p>Automated accounts identified by the trained Keras model based on author + comment patterns.</p></div>
+          </div>
+          <div class="criteria-sep"></div>
+          <div class="model-info">
+            <div class="mi-row"><span class="mi-label">Model</span><span class="mi-val">Keras Bot Detection (Deep Learning)</span></div>
+            <div class="mi-row"><span class="mi-label">Input</span><span class="mi-val">Author name + comment text</span></div>
+            <div class="mi-row"><span class="mi-label">Threshold</span><span class="mi-val">Bot probability &gt; 50%</span></div>
+            <div class="mi-row"><span class="mi-label">Library</span><span class="mi-val">TensorFlow / Keras</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card table-card" style="margin-bottom:1.25rem">
+      <div style="padding:1.5rem 1.5rem .5rem">
+        <div class="card-title">Suspected Bot Accounts — Flagged Comments</div>
+      </div>
+      <div class="table-scroll">
+        <table class="comments-table">
+          <thead>
+            <tr>
+              <th>Username</th>
+              <th style="width:42%">Comment</th>
+              <th>Bot Probability</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="botTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="info-banner">
+      <span class="ib-icon">🔬</span>
+      <div>
+        <strong>Model Note:</strong> Bot detection uses a trained Keras neural network
+        that combines the author's display name with comment text to produce a
+        bot probability score. Comments with probability &gt; 50% are flagged.
+        Model accuracy depends on training data quality and may vary by content type.
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  const stored = sessionStorage.getItem('ytva_result');
+  if (stored) {
+    const data = JSON.parse(stored);
+    document.getElementById('noData').style.display = 'none';
+    document.getElementById('botsContent').style.display = 'block';
+    renderBots(data);
+  }
+
+  function renderBots(data) {
+    const total      = data.summary.total_comments;
+    const s          = data.summary;
+    const botComments = data.comments.filter(c => c.is_bot === true || c.is_bot === 'true' || c.bot_probability > 50);
+    const botCount       = s.bot_count   !== undefined ? s.bot_count   : botComments.length;
+    const humanCount     = s.human_count !== undefined ? s.human_count : (total - botCount);
+    const botPct         = s.bot_pct     !== undefined ? s.bot_pct     : ((botCount / total) * 100).toFixed(1);
+    const humanPct       = s.human_pct   !== undefined ? s.human_pct   : ((humanCount / total) * 100).toFixed(1);
+
+    document.getElementById('botStats').innerHTML = `
+      <div class="stat-card"><div class="sc-val">${total}</div><div class="sc-key">Total Comments</div><div class="sc-sub">Analyzed by bot model</div></div>
+      <div class="stat-card" style="--accent:#10b981"><div class="sc-val" style="color:#10b981">${humanCount}</div><div class="sc-key">Human Comments</div><div class="sc-sub" style="color:#10b981">${humanPct}% authentic</div></div>
+      <div class="stat-card" style="--accent:#f59e0b"><div class="sc-val" style="color:#f59e0b">${botCount}</div><div class="sc-key">Suspected Bots</div><div class="sc-sub" style="color:#f59e0b">${botPct}% flagged</div></div>
+      <div class="stat-card" style="--accent:#6366f1"><div class="sc-val" style="color:#6366f1">${humanPct}%</div><div class="sc-key">Authentic Rate</div><div class="sc-sub">Genuine engagement</div></div>
+    `;
+
+    Plotly.newPlot('botPieChart', [{
+      values: [humanCount, botCount],
+      labels: ['Human Users', 'Suspected Bots'],
+      type: 'pie', hole: 0.6,
+      marker: { colors: ['#10b981', '#f59e0b'] },
+      textinfo: 'label+percent',
+      textfont: { color: '#e2e8f0', family: 'DM Sans', size: 13 },
+    }], {
+      paper_bgcolor: 'transparent', plot_bgcolor: 'transparent',
+      font: { color: '#94a3b8', family: 'DM Sans' },
+      showlegend: false, margin: { l:20, r:20, t:20, b:20 }
+    }, { responsive: true, displayModeBar: false });
+
+    const tbody = document.getElementById('botTableBody');
+    if (!botComments.length) {
+      tbody.innerHTML = `<tr><td colspan="4" class="empty-row">No bot activity detected in this dataset.</td></tr>`;
+      return;
+    }
+    tbody.innerHTML = botComments.slice(0, 20).map(c => {
+      const prob = c.bot_probability || 0;
+      return `<tr class="comment-row">
+        <td class="author-cell">${escapeHtml(c.author)}</td>
+        <td class="comment-text-cell">${escapeHtml(c.text.substring(0, 90))}${c.text.length > 90 ? '…' : ''}</td>
+        <td>
+          <div class="conf-wrap">
+            <div class="conf-bar-bg"><div class="conf-bar-fill" style="width:${prob}%;background:#f59e0b"></div></div>
+            <span class="conf-text">${Math.round(prob)}%</span>
+          </div>
+        </td>
+        <td><span class="badge" style="--bc:#f59e0b">⚠ Suspected Bot</span></td>
+      </tr>`;
+    }).join('');
+  }
+
+  function escapeHtml(t) {
+    return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  // Helper function to set sample text
+  function setSampleText(text) {
+    document.getElementById('botTextInput').value = text;
+    document.getElementById('testBotBtn').click();
+  }
+
+  // Live Bot Tester - Calls backend API (all logic in app.py)
+  document.getElementById('testBotBtn').addEventListener('click', async () => {
+    const text = document.getElementById('botTextInput').value.trim();
+    
+    if (!text) {
+      alert('Please enter a comment to test');
+      return;
+    }
+    
+    const resultDiv = document.getElementById('botLiveResult');
+    resultDiv.style.display = 'block';
+    resultDiv.innerHTML = '<div style="padding:15px; text-align:center">🔍 Analyzing...</div>';
+    
+    try {
+      // Call the backend API - all pattern matching happens in app.py
+      const response = await fetch('http://localhost:5000/api/test_bot', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          author: "TestUser", 
+          text: text 
+        })
+      });
+      
+      const data = await response.json();
+      
+      if (data.error) {
+        resultDiv.innerHTML = `<div class="bot-error">Error: ${data.error}</div>`;
+        return;
+      }
+      
+      // Get data from backend
+      const prob = data.result.bot_probability;
+      const label = data.result.label || (prob > 70 ? 'BOT' : prob > 50 ? 'SUSPICIOUS' : prob > 30 ? 'MAYBE BOT' : 'HUMAN');
+      const reasons = data.result.reasons || [];
+      const mlProb = data.result.ml_probability || 0;
+      
+      // Determine color based on probability
+      let color;
+      if (prob >= 70) color = '#ef4444';
+      else if (prob >= 50) color = '#f59e0b';
+      else if (prob >= 30) color = '#f59e0b';
+      else color = '#10b981';
+      
+      // Create icon based on probability
+      const icon = prob >= 70 ? '🤖' : prob >= 50 ? '⚠' : prob >= 30 ? '⚠' : '👤';
+      
+      // Create message based on probability
+      let message;
+      if (prob >= 70) message = 'High probability of bot activity';
+      else if (prob >= 50) message = 'Shows bot-like patterns';
+      else if (prob >= 30) message = 'Some suspicious elements';
+      else message = 'Looks like a real user';
+      
+      // Create reasons HTML if available
+      const reasonsHtml = reasons.length > 0 
+        ? `<div class="bot-reasons">
+            ${reasons.map(r => `<span class="bot-reason-tag">${r}</span>`).join('')}
+           </div>`
+        : '';
+      
+      // ML indicator if model was used
+      const mlIndicator = mlProb > 0 
+        ? `<div style="font-size:0.75rem; color:#888; margin-top:4px">ML confidence: ${mlProb}%</div>`
+        : '';
+      
+      resultDiv.innerHTML = `
+        <div class="bot-result-container">
+          <div class="bot-status-badge" style="color:${color}">
+            ${icon} ${label} — ${Math.round(prob)}% probability
+          </div>
+          <div class="bot-probability-bar">
+            <div class="bot-probability-label">
+              <span>Bot Probability</span>
+              <span style="font-weight:bold; color:${color}">${Math.round(prob)}%</span>
+            </div>
+            <div class="bot-bar-bg">
+              <div class="bot-bar-fill" style="width:${prob}%; background:${color}"></div>
+            </div>
+          </div>
+          <div class="bot-message-box">
+            <div style="display:flex; gap:10px; align-items:center">
+              <span style="font-size:1.2rem">${prob > 50 ? '🚫' : '✅'}</span>
+              <span>${message}</span>
+            </div>
+            ${reasonsHtml}
+            ${mlIndicator}
+            <div class="bot-threshold-note">
+              Threshold: >50% = Bot | Current: ${Math.round(prob)}%
+            </div>
+          </div>
+        </div>
+      `;
+      
+    } catch (error) {
+      console.error('Bot tester error:', error);
+      resultDiv.innerHTML = `
+        <div class="bot-error">
+          <strong>Error connecting to server</strong><br>
+          <small>Make sure Flask is running on port 5000</small><br>
+          <small>${error.message}</small>
+        </div>
+      `;
+    }
+  });
+
+  // Allow Ctrl+Enter to trigger test
+  document.getElementById('botTextInput').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && e.ctrlKey) {
+      document.getElementById('testBotBtn').click();
+    }
+  });
+</script>
+{% endblock %}

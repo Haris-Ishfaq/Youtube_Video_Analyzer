@@ -1,0 +1,3422 @@
+{
+  "metadata": {
+    "video_id": "9bZkp7q19f0",
+    "generated_at": "2026-04-28T23:25:52.623435",
+    "total_comments": 100
+  },
+  "summary": {
+    "bot_count": 1,
+    "bot_pct": 1,
+    "human_count": 99,
+    "human_pct": 99,
+    "normal_count": 97,
+    "normal_pct": 97,
+    "spam_count": 1,
+    "spam_pct": 1,
+    "total_comments": 100,
+    "toxic_count": 2,
+    "toxic_pct": 2
+  },
+  "comments": [
+    {
+      "author": "@aashutoshrimal1497",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 44685,
+      "likes": 44685,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2020-04-16T02:27:34Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 11
+      },
+      "text": "For those who dont know: *This song literally broke the internet…"
+    },
+    {
+      "author": "@yyumass",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 93135,
+      "likes": 93135,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2020-05-10T07:02:06Z",
+      "signals": {
+        "all_caps": 1,
+        "all_caps_ratio": 0.1111111111111111,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 9
+      },
+      "text": "PSY: Created a Korean song<br><br>99.99% of listeners: <b>Not Korean</b>"
+    },
+    {
+      "author": "@thecrustyonion5935",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 70872,
+      "likes": 70872,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2019-11-06T02:21:32Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 11
+      },
+      "text": "Me in 2012: ha funny song<br><br>Me in 2019: <b>cries in nostalgia</b>"
+    },
+    {
+      "author": "@xaviert.123",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 10,
+      "likes": 10,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2026-04-28T16:43:47Z",
+      "signals": {
+        "all_caps": 1,
+        "all_caps_ratio": 0.1,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 10
+      },
+      "text": "HOW are there comments from 30 minutes ago, even today??"
+    },
+    {
+      "author": "@Quartz5005",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 23592,
+      "likes": 23592,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2020-04-17T06:42:50Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 12
+      },
+      "text": "This guy could&#39;ve said &#39;Vote me for president&#39; and everyone would&#39;ve voted"
+    },
+    {
+      "author": "@Iblamegenetics.0",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 133880,
+      "likes": 133880,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2024-12-08T12:55:22Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 10
+      },
+      "text": "This is the closest we were to achieve world peace"
+    },
+    {
+      "author": "@superkamehameha1744",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 3314,
+      "likes": 3314,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2025-07-27T00:02:17Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 15
+      },
+      "text": "Thank you Psy for preventing the apocalypse by making the Honmoon Golden back in 2012"
+    },
+    {
+      "author": "@스몰바",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 36,
+      "likes": 36,
+      "ml_probabilities": {
+        "normal": 75,
+        "spam": 15,
+        "toxic": 10
+      },
+      "probabilities": {
+        "normal": 75,
+        "spam": 15,
+        "toxic": 10
+      },
+      "published_at": "2026-04-28T14:54:31Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 4
+      },
+      "text": "그 사람때문에 왔으면 개추"
+    },
+    {
+      "author": "@divaalfirman3295",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 19004,
+      "likes": 19004,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2020-08-24T03:42:31Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 7
+      },
+      "text": "This was basically Planet Earth&#39;s theme song"
+    },
+    {
+      "author": "@_Raecious_",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 67860,
+      "likes": 67860,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2025-01-05T16:14:39Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 7
+      },
+      "text": "Bro almost united the whole world 😭😭"
+    },
+    {
+      "author": "@feesh8198",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 20008,
+      "likes": 20008,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2019-11-11T09:56:06Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 11
+      },
+      "text": "Are we seriously going to ignore how well that child danced"
+    },
+    {
+      "author": "@realDewSplatGum",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 9666,
+      "likes": 9666,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2021-01-11T19:23:51Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 6
+      },
+      "text": "North Korea: We have missiles.<br><br>South Korea:"
+    },
+    {
+      "author": "@satibeza1426",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 1204,
+      "likes": 1204,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2021-09-05T12:23:39Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 15
+      },
+      "text": "Let&#39;s pretend this song just came out and everything is right in the world again"
+    },
+    {
+      "author": "@aotd6118",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 4557,
+      "likes": 4557,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2019-06-02T07:44:16Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 8
+      },
+      "text": "2012: <b>nope</b><br><br>2019: <b>yes it&#39;s time to watch this</b>"
+    },
+    {
+      "author": "@Cloudy_533",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 85,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 56,
+      "likes": 56,
+      "ml_probabilities": {
+        "normal": 85,
+        "spam": 9,
+        "toxic": 6
+      },
+      "probabilities": {
+        "normal": 85,
+        "spam": 9,
+        "toxic": 6
+      },
+      "published_at": "2026-04-28T02:10:23Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 6
+      },
+      "text": "요즘 다르게 들리는 노래 1위 ㅋㅋ"
+    },
+    {
+      "author": "@Hannah-lr4le",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 1990,
+      "likes": 1990,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2019-06-05T18:05:36Z",
+      "signals": {
+        "all_caps": 1,
+        "all_caps_ratio": 0.08333333333333333,
+        "exclamations": 1,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 12
+      },
+      "text": "2019 after 6 years! <br><br>Do you remember world&#39;s ending? <br>7M = 3.3B"
+    },
+    {
+      "author": "@unoriginal6958",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 2027,
+      "likes": 2027,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2021-09-22T20:43:16Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 14
+      },
+      "text": "i still remember how huge this song was.  literally everyone was talking about it"
+    },
+    {
+      "author": "@Sahil_Pathan_9292",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 5660,
+      "likes": 5660,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2026-01-30T20:16:41Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 13
+      },
+      "text": "If aliens ever saw this, they will think this guy is our leader."
+    },
+    {
+      "author": "@JHPII",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 993,
+      "likes": 993,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2026-04-24T13:35:35Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 10
+      },
+      "text": "13 years later, if you&#39;re watching this you&#39;re a legend."
+    },
+    {
+      "author": "@cloutelfin8323",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 3237,
+      "likes": 3237,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2021-09-04T21:33:37Z",
+      "signals": {
+        "all_caps": 1,
+        "all_caps_ratio": 0.08333333333333333,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 12
+      },
+      "text": "This song was played EVERYWHERE when I was little. The memories dudeeee"
+    },
+    {
+      "author": "@kateeditsmusicalsforfun",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 1454,
+      "likes": 1454,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2025-07-31T18:15:00Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 8
+      },
+      "text": "I swear this song brought world peace 😭"
+    },
+    {
+      "author": "@rationalrad6950",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 5050,
+      "likes": 5050,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2020-05-12T19:12:01Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 17
+      },
+      "text": "I&#39;m looking back at 6 year old me trying to sing the lyrics thinking they were english"
+    },
+    {
+      "author": "@VikrantSingh-i5g",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 0,
+      "likes": 0,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2026-04-28T17:32:16Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 5
+      },
+      "text": "Anybody on 2026............ <br>Vote plzz"
+    },
+    {
+      "author": "@Dr.Supreme817",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 1278,
+      "likes": 1278,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2024-09-17T22:39:30Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 11
+      },
+      "text": "Who would believe 12 years later this song is still popping"
+    },
+    {
+      "author": "@boomcruiser",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 6085,
+      "likes": 6085,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2016-02-01T22:35:23Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 19
+      },
+      "text": "Am I the only one who comes back to this video, just to see what the views are at?"
+    },
+    {
+      "author": "@tutusiatutusia1188",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 716,
+      "likes": 716,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2025-11-13T06:11:59Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 15
+      },
+      "text": "No worries you&#39;re not the only one here listening to this masterpiece in November 2025"
+    },
+    {
+      "author": "@MercuryLeeset",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 100,
+      "likes": 100,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2026-04-25T17:23:55Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 11
+      },
+      "text": "2012년: 와 미래에는 또 어떤 음악이 나올까?<br>2026년: 옵 옵 옵 에~~~~~"
+    },
+    {
+      "author": "@OwenMcBrideTrademarkPending",
+      "bot_probability": 10,
+      "category": "toxic",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": true,
+      "label": "toxic",
+      "likeCount": 317,
+      "likes": 317,
+      "ml_probabilities": {
+        "normal": 6,
+        "spam": 9,
+        "toxic": 70
+      },
+      "probabilities": {
+        "normal": 6,
+        "spam": 9,
+        "toxic": 70
+      },
+      "published_at": "2025-08-11T23:11:54Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 1,
+        "word_count": 11
+      },
+      "text": "This song might actually be talked abt in future history classes"
+    },
+    {
+      "author": "@1novqq",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 748,
+      "likes": 748,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2022-07-31T17:36:17Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 14
+      },
+      "text": "its been 10 years and this is still one of the worlds biggest hits😭"
+    },
+    {
+      "author": "@sunnydayz3396",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 853,
+      "likes": 853,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2020-05-01T18:34:19Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 11
+      },
+      "text": "Half of the humans on Earth had seen this music video."
+    },
+    {
+      "author": "@unitfps",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 421,
+      "likes": 421,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2026-04-21T22:12:51Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 10
+      },
+      "text": "6 billion views. the entire world knows this legendary song."
+    },
+    {
+      "author": "@aidenrhoads3801",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 624,
+      "likes": 624,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2019-07-06T20:37:10Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 14
+      },
+      "text": "2019, laying in bed trying to sleep and suddenly this popped into my mind"
+    },
+    {
+      "author": "@JohnDiara-w1v",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 21289,
+      "likes": 21289,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2025-08-17T22:36:41Z",
+      "signals": {
+        "all_caps": 1,
+        "all_caps_ratio": 0.05263157894736842,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 19
+      },
+      "text": "Book of the century - &quot;Night in Zagreb&quot; by Medvidović <br>Song of the century - Gangnam Style by PSY"
+    },
+    {
+      "author": "@Shubham-dm8ws",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 191,
+      "likes": 191,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2020-03-10T20:35:19Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 13
+      },
+      "text": "Everyone have their own version of lyrics of this song inside their mind"
+    },
+    {
+      "author": "@mrecmis_nyfrax",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 48,
+      "likes": 48,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2026-04-27T16:25:08Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 4
+      },
+      "text": "Who&#39;s in April 2026?"
+    },
+    {
+      "author": "@Cloud-if5hx",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 324,
+      "likes": 324,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2015-05-01T07:50:17Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 5,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 12
+      },
+      "text": "How can there be 2.000.000.000 views if there are only 6 dragonballs?!!1?Eleven?!111?!questionmark!1?"
+    },
+    {
+      "author": "@Biyeer31",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 141,
+      "likes": 141,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2021-08-01T15:39:54Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 14
+      },
+      "text": "Una gran obra de arte, han pasado muchos años y sigue siendo brutal XD"
+    },
+    {
+      "author": "@ttukkhho",
+      "bot_probability": 35,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 65,
+      "likes": 65,
+      "ml_probabilities": {
+        "normal": 75,
+        "spam": 15,
+        "toxic": 10
+      },
+      "probabilities": {
+        "normal": 75,
+        "spam": 15,
+        "toxic": 10
+      },
+      "published_at": "2026-04-23T16:40:08Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 2,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 2
+      },
+      "text": "인간적인 인간여쨔!!"
+    },
+    {
+      "author": "@EliteShot",
+      "bot_probability": 50,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 427,
+      "likes": 427,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2021-06-08T10:42:44Z",
+      "signals": {
+        "all_caps": 3,
+        "all_caps_ratio": 0.6,
+        "exclamations": 1,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 5
+      },
+      "text": "🦍🦍 KING KONGNAM STYLE! 🦍🦍"
+    },
+    {
+      "author": "@zoesherlock",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 1134,
+      "likes": 1134,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2015-07-18T19:57:22Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 13
+      },
+      "text": "still can&#39;t believe how many views this video has got and is getting"
+    },
+    {
+      "author": "@subaghoul4938",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 546,
+      "likes": 546,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2017-02-27T04:44:15Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 12
+      },
+      "text": "2012=wow this is amazing song.<br>2017=let&#39;s see how many views these song has.😂😂"
+    },
+    {
+      "author": "@Andrew-d3c2u",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 77,
+      "likes": 77,
+      "ml_probabilities": {
+        "normal": 75,
+        "spam": 15,
+        "toxic": 10
+      },
+      "probabilities": {
+        "normal": 75,
+        "spam": 15,
+        "toxic": 10
+      },
+      "published_at": "2026-04-26T05:42:52Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 4
+      },
+      "text": "2026년에서 보는 사람…?( 없겠징…)"
+    },
+    {
+      "author": "@omerbareket7553",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 1609,
+      "likes": 1609,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2016-09-14T16:15:54Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 10
+      },
+      "text": "who comes to check how much views this song has?"
+    },
+    {
+      "author": "@Fp_RealC18",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 621,
+      "likes": 621,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2016-08-25T23:31:16Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 12
+      },
+      "text": "Who else came just to see how many views this vid has?"
+    },
+    {
+      "author": "@aributera6241",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 343,
+      "likes": 343,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2016-12-03T01:46:00Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 20
+      },
+      "text": "Wow it&#39;s been a long time since I had heard this song.   I&#39;m typing this in December 2, 2016 ."
+    },
+    {
+      "author": "@SimraYuhanitha",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 20,
+      "likes": 20,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2026-04-27T19:01:56Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 14
+      },
+      "text": "Thought I was revisiting history, but this comment section is still in the present."
+    },
+    {
+      "author": "@landonnorris8364",
+      "bot_probability": 50,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 551,
+      "likes": 551,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2016-12-12T00:44:54Z",
+      "signals": {
+        "all_caps": 7,
+        "all_caps_ratio": 0.7777777777777778,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 9
+      },
+      "text": "WHO IS WATCHING THIS INSTEAD OF STUDYING FOR EXAMS"
+    },
+    {
+      "author": "@safefrerichssafefrerichs7724",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 255,
+      "likes": 255,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2025-12-28T21:31:17Z",
+      "signals": {
+        "all_caps": 1,
+        "all_caps_ratio": 0.125,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 8
+      },
+      "text": "WHO is here in 2025 and soon 2026"
+    },
+    {
+      "author": "@GamingOFran",
+      "bot_probability": 50,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 437,
+      "likes": 437,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2017-02-27T21:37:15Z",
+      "signals": {
+        "all_caps": 5,
+        "all_caps_ratio": 0.625,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 8
+      },
+      "text": "WHO IS WATCHING IT NOW, AT 28TH FEBRUARY"
+    },
+    {
+      "author": "@shahinak1412",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 12,
+      "likes": 12,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2026-04-28T05:33:11Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 3
+      },
+      "text": "Anyone 2026 ?"
+    },
+    {
+      "author": "@Josh-nh2ho",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 1803,
+      "likes": 1803,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2015-06-29T03:22:25Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 11
+      },
+      "text": "Who else is here to see how many views it has"
+    },
+    {
+      "author": "@FaZeRuler",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 467,
+      "likes": 467,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2015-10-05T11:37:51Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 4
+      },
+      "text": "this video still exists."
+    },
+    {
+      "author": "@gabrielalmeida7479",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 187,
+      "likes": 187,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2014-12-04T16:42:31Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 11
+      },
+      "text": "Vai ganhar mais 2 bilhões por causa do davy hue hue"
+    },
+    {
+      "author": "@이틱",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 2,
+      "likes": 2,
+      "ml_probabilities": {
+        "normal": 75,
+        "spam": 15,
+        "toxic": 10
+      },
+      "probabilities": {
+        "normal": 75,
+        "spam": 15,
+        "toxic": 10
+      },
+      "published_at": "2026-04-28T15:32:56Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 5
+      },
+      "text": "낮에는 따사로운 머리푸는 인간 여쨔"
+    },
+    {
+      "author": "@sevenj521",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 235,
+      "likes": 235,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2015-09-15T12:55:46Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 10
+      },
+      "text": "Who is watching this on the 15th septembre 2015? :D"
+    },
+    {
+      "author": "@adinishad.01",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 191,
+      "likes": 191,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2026-01-12T16:02:13Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 4
+      },
+      "text": "who&#39;s in jan 2026?"
+    },
+    {
+      "author": "@simonkrahmer5863",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 176,
+      "likes": 176,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2016-04-24T16:44:31Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 13
+      },
+      "text": "who else came to see how many views this video had in 24/4/2016"
+    },
+    {
+      "author": "@신빵준-q6u",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 6,
+      "likes": 6,
+      "ml_probabilities": {
+        "normal": 75,
+        "spam": 15,
+        "toxic": 10
+      },
+      "probabilities": {
+        "normal": 75,
+        "spam": 15,
+        "toxic": 10
+      },
+      "published_at": "2026-04-27T06:31:30Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 3
+      },
+      "text": "낮☀️에는 따사로운 머리푸는🙆싸나에🥵"
+    },
+    {
+      "author": "@banino9295",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 288,
+      "likes": 288,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2016-09-30T20:16:19Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 23
+      },
+      "text": "This video is 4 years old and you can still read the comment section and see comments with written under &quot;10 minutes ago&quot;"
+    },
+    {
+      "author": "@wolfys9532",
+      "bot_probability": 10,
+      "category": "toxic",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": true,
+      "label": "toxic",
+      "likeCount": 248,
+      "likes": 248,
+      "ml_probabilities": {
+        "normal": 6,
+        "spam": 9,
+        "toxic": 70
+      },
+      "probabilities": {
+        "normal": 6,
+        "spam": 9,
+        "toxic": 70
+      },
+      "published_at": "2016-12-09T23:00:03Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 1,
+        "word_count": 6
+      },
+      "text": "Remember when this was the shit?"
+    },
+    {
+      "author": "@NoName-ub8xd",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 204,
+      "likes": 204,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2015-11-20T21:58:35Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 16
+      },
+      "text": "Like who visited this song just to see how many views does it have  now &lt;3"
+    },
+    {
+      "author": "@ItsMeINKMASTER",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 1,
+      "likes": 1,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2026-04-28T17:38:08Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 8
+      },
+      "text": "i was 1 and still feel the nostalgia"
+    },
+    {
+      "author": "@Shortsynergy",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 198,
+      "likes": 198,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2015-06-09T00:13:36Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 9
+      },
+      "text": "Still watching it 2015 and ask me why :D"
+    },
+    {
+      "author": "@urbar3825",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 182,
+      "likes": 182,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2015-05-01T23:43:00Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 9
+      },
+      "text": "Solo vengo aca para saber cuantas reproducciones tiene :v"
+    },
+    {
+      "author": "@D0A_OW",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 0,
+      "likes": 0,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2026-04-28T17:15:48Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 13
+      },
+      "text": "옵 옵 옵 옵 옵 여자 에<br>낮엔 여자 밤엔 자<br>옵 옵 옵 옵"
+    },
+    {
+      "author": "@stinianshiznit04",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 202,
+      "likes": 202,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2016-04-29T19:22:43Z",
+      "signals": {
+        "all_caps": 1,
+        "all_caps_ratio": 0.045454545454545456,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 22
+      },
+      "text": "Am I the only one who came here because I&#39;m still baffled, trying to understand WHY this video has so many views??"
+    },
+    {
+      "author": "@adammulhall1195",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 258,
+      "likes": 258,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2016-11-24T15:45:25Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 10
+      },
+      "text": "this comment will be lost forever never seen by anyone"
+    },
+    {
+      "author": "@relickmygenitahll_3482",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 2632,
+      "likes": 2632,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2015-11-19T15:51:22Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 12
+      },
+      "text": "Who came here just to see how many views the video has?"
+    },
+    {
+      "author": "@BlueHairRants",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 1,
+      "likes": 1,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2026-04-28T16:59:21Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 9
+      },
+      "text": "North Korea:we got Nuclear warheads <br><br>South Korea: we got..........."
+    },
+    {
+      "author": "@TheBroadestOne",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 673,
+      "likes": 673,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2016-11-02T23:40:21Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 7
+      },
+      "text": "So muss sich der Mauerfall angefühlt haben"
+    },
+    {
+      "author": "@jonshow0",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 257,
+      "likes": 257,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2016-11-07T17:55:10Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 3
+      },
+      "text": "<b>Русские, ставьте like))</b>"
+    },
+    {
+      "author": "@limezintromaker4030",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 314,
+      "likes": 314,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2017-03-06T20:45:48Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 5
+      },
+      "text": "Who&#39;s watching in March 2017"
+    },
+    {
+      "author": "@Wdym.vaanya",
+      "bot_probability": 45,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 401,
+      "likes": 401,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2026-02-08T17:56:44Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 3,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 11
+      },
+      "text": "Anyone in February 2026 after this broke the internet !!! 🛜"
+    },
+    {
+      "author": "@Shatakshi-v3h",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 10,
+      "likes": 10,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2026-04-27T12:26:46Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 6
+      },
+      "text": "The song is officially a teenager😂"
+    },
+    {
+      "author": "@itsallprohd",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 303,
+      "likes": 303,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2013-12-01T22:32:11Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 10
+      },
+      "text": "Thumbs up if you came here to check the views."
+    },
+    {
+      "author": "@sulimanalalawi980",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 153,
+      "likes": 153,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2015-12-02T06:33:53Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 11
+      },
+      "text": "I&#39;m here to check the views, what are you doing here?"
+    },
+    {
+      "author": "@maGi_67",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 4,
+      "likes": 4,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2026-04-27T19:53:51Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 3
+      },
+      "text": "1% understanding<br>200% vibes"
+    },
+    {
+      "author": "@lukasiiino9283",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 1470,
+      "likes": 1470,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2017-02-01T13:42:34Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 4
+      },
+      "text": "Who watching today 1.2.2017?"
+    },
+    {
+      "author": "@pwr6471",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 207,
+      "likes": 207,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2015-05-20T22:39:19Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 4
+      },
+      "text": "under the 2,338,432,623 club"
+    },
+    {
+      "author": "@betterpot1924",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 219,
+      "likes": 219,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2016-01-22T05:44:27Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 8
+      },
+      "text": "Who just came here to see the views?"
+    },
+    {
+      "author": "@그림완벽주의자",
+      "bot_probability": 35,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 10,
+      "likes": 10,
+      "ml_probabilities": {
+        "normal": 75,
+        "spam": 15,
+        "toxic": 10
+      },
+      "probabilities": {
+        "normal": 75,
+        "spam": 15,
+        "toxic": 10
+      },
+      "published_at": "2026-04-27T12:50:45Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 1
+      },
+      "text": "난(옵)널(옵)버(옵)리(옵)지(옵)않(옵)아"
+    },
+    {
+      "author": "@JacklyTranTheBeyMask",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 3835,
+      "likes": 3835,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2016-02-19T22:53:38Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 9
+      },
+      "text": "Who has come here just to see the views?"
+    },
+    {
+      "author": "@yashvaishnav5583",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 194,
+      "likes": 194,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2017-02-23T16:56:08Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 8
+      },
+      "text": "who is watching this on 23 Feb 2017"
+    },
+    {
+      "author": "@kiritokazuto2363",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 204,
+      "likes": 204,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2016-11-16T03:29:05Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 8
+      },
+      "text": "Who else came here to check the views?"
+    },
+    {
+      "author": "@서희-v6nd",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 90,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 19,
+      "likes": 19,
+      "ml_probabilities": {
+        "normal": 90,
+        "spam": 6,
+        "toxic": 4
+      },
+      "probabilities": {
+        "normal": 90,
+        "spam": 6,
+        "toxic": 4
+      },
+      "published_at": "2026-04-25T09:46:08Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 12
+      },
+      "text": "우와 13년 전 노래를 1시간 전, 30분 전에 보는 사람이 있다니 신기하닿"
+    },
+    {
+      "author": "@Kay",
+      "bot_probability": 35,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 241,
+      "likes": 241,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2015-10-04T22:59:46Z",
+      "signals": {
+        "all_caps": 1,
+        "all_caps_ratio": 1,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 1
+      },
+      "text": "LOL"
+    },
+    {
+      "author": "@SkyHunterss",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 728,
+      "likes": 728,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2015-04-29T21:26:02Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 12
+      },
+      "text": "Who came here just to See How Many views on it 😂🙌"
+    },
+    {
+      "author": "@mr.sneezonyou5464",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 1912,
+      "likes": 1912,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2016-04-17T18:27:06Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 6
+      },
+      "text": "everyone here to see vieuws? xd"
+    },
+    {
+      "author": "@samsiv7801",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 7,
+      "likes": 7,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2026-04-26T20:41:50Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 1,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 4
+      },
+      "text": "The absolute k-pop grandfather!"
+    },
+    {
+      "author": "@inigo6497",
+      "bot_probability": 35,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 810,
+      "likes": 810,
+      "ml_probabilities": {
+        "normal": 75,
+        "spam": 15,
+        "toxic": 10
+      },
+      "probabilities": {
+        "normal": 75,
+        "spam": 15,
+        "toxic": 10
+      },
+      "published_at": "2017-02-03T06:39:44Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 1
+      },
+      "text": "."
+    },
+    {
+      "author": "@ИСМАИЛУЦИЕВ-з1ч",
+      "bot_probability": 45,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 205,
+      "likes": 205,
+      "ml_probabilities": {
+        "normal": 75,
+        "spam": 15,
+        "toxic": 10
+      },
+      "probabilities": {
+        "normal": 75,
+        "spam": 15,
+        "toxic": 10
+      },
+      "published_at": "2015-11-04T16:24:23Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 3,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 3
+      },
+      "text": "Ебать сколько просмотров!!!"
+    },
+    {
+      "author": "@ZFILP7",
+      "bot_probability": 60,
+      "category": "spam",
+      "confidence": 80,
+      "is_bot": true,
+      "is_spam": true,
+      "is_toxic": false,
+      "label": "spam",
+      "likeCount": 5,
+      "likes": 5,
+      "ml_probabilities": {
+        "normal": 6,
+        "spam": 80,
+        "toxic": 14
+      },
+      "probabilities": {
+        "normal": 6,
+        "spam": 80,
+        "toxic": 14
+      },
+      "published_at": "2026-04-28T11:39:11Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 1,
+        "has_emoji_spam": false,
+        "has_url": true,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 3
+      },
+      "text": "<a href=\"https://www.youtube.com/watch?v=9bZkp7q19f0&amp;t=30\">0:30</a> 여짜!"
+    },
+    {
+      "author": "@OOON_boi",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 85,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 6,
+      "likes": 6,
+      "ml_probabilities": {
+        "normal": 85,
+        "spam": 9,
+        "toxic": 6
+      },
+      "probabilities": {
+        "normal": 85,
+        "spam": 9,
+        "toxic": 6
+      },
+      "published_at": "2026-04-24T09:08:40Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 8
+      },
+      "text": "돌아가고싶다 강남스타일 소식을 뉴스로 접하고 벙쪘던 그 날로"
+    },
+    {
+      "author": "@darlord-d1l",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 1,
+      "likes": 1,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2026-04-28T15:26:13Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 3
+      },
+      "text": "13 years ...."
+    },
+    {
+      "author": "@itsmanchas5786",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 11,
+      "likes": 11,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2026-04-23T00:43:00Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 14
+      },
+      "text": "This man is the reason demons did not invade our world in 2012, lol."
+    },
+    {
+      "author": "@춘식이는귀여워-z6o",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 2,
+      "likes": 2,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2026-04-27T17:43:04Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 1,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 9
+      },
+      "text": "0+0 리믹스 듣고 온 사람 없나..<br>낮에는 따사로운 인간적인 여쨔!"
+    },
+    {
+      "author": "@aliaccent5904",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 12,
+      "likes": 12,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2026-04-27T23:22:44Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 24
+      },
+      "text": "For Those Who Don’t Know: This Song PSY&#39;s &quot;Gangnam Style&quot; was the first YouTube video to hit 1 billion views in December 2012 …<br>❤"
+    },
+    {
+      "author": "@TomaszNowak-y7u",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 1,
+      "likes": 1,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2026-04-28T16:05:18Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 19
+      },
+      "text": "This scene in the elevator is soooo funny <br>In the gentleman song this same peapole dancing in the mirror😂"
+    },
+    {
+      "author": "@trezayoussef2417",
+      "bot_probability": 10,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 4,
+      "likes": 4,
+      "ml_probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "probabilities": {
+        "normal": 22.7,
+        "spam": 46.4,
+        "toxic": 30.9
+      },
+      "published_at": "2026-04-27T21:32:15Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 0,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 8
+      },
+      "text": "Anyone trying to remember prime 2012 in 2026"
+    },
+    {
+      "author": "@dongkyu96",
+      "bot_probability": 35,
+      "category": "normal",
+      "confidence": 75,
+      "is_bot": false,
+      "is_spam": false,
+      "is_toxic": false,
+      "label": "normal",
+      "likeCount": 5,
+      "likes": 5,
+      "ml_probabilities": {
+        "normal": 75,
+        "spam": 15,
+        "toxic": 10
+      },
+      "probabilities": {
+        "normal": 75,
+        "spam": 15,
+        "toxic": 10
+      },
+      "published_at": "2026-04-28T12:42:18Z",
+      "signals": {
+        "all_caps": 0,
+        "all_caps_ratio": 0,
+        "exclamations": 1,
+        "has_emoji_spam": false,
+        "has_url": false,
+        "spam_signals": 0,
+        "toxic_signals": 0,
+        "word_count": 1
+      },
+      "text": "인간여짜!"
+    }
+  ]
+}
